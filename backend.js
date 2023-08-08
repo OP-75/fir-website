@@ -2,7 +2,6 @@ const express = require('express')
 const cors = require('cors')
 
 const mongoose = require('mongoose')
-const {userDetails} = require('./mongoose-schema')
 const UserDetails = require('./mongoose-schema')
 
 const app = express()
@@ -35,11 +34,45 @@ app.post("/register",async (req,res)=>{
     const data = req.body;
 
     console.log(data);
-
+    
+    const details = new UserDetails(data)
+    console.log(details);
     try {
-        const details = new UserDetails({data})
         const mongooseDoc = await details.save()
         res.status(201).json({sucess: true, data: mongooseDoc})
+    } catch (error) {
+        console.log(`Error wile saving or creatining the UserDetails object:: ${error}`);
+    }
+    
+
+})
+app.put("/register/:objId",async (req,res)=>{
+    const data = req.body;
+
+    const {objId} = req.params
+
+    console.log(data);
+    
+    const details = new UserDetails(data)
+    console.log(details);
+    try {
+        //see the docs for more
+        const mongooseDoc = await UserDetails.findByIdAndUpdate(objId, data)
+        res.status(202).json({sucess: true, data: mongooseDoc})
+    } catch (error) {
+        console.log(`Error wile saving or creatining the UserDetails object:: ${error}`);
+    }
+    
+
+})
+app.delete("/register/:objId",async (req,res)=>{
+
+    const {objId} = req.params
+
+    try {
+        //see the docs for more details, param is the filter
+        const mongooseDoc = await UserDetails.deleteOne({_id: objId})
+        res.status(202).json({sucess: true, data: mongooseDoc})
     } catch (error) {
         console.log(`Error wile saving or creatining the UserDetails object:: ${error}`);
     }
