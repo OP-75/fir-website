@@ -86,3 +86,11 @@ app.get("/register",(req,res)=>{
     res.status(200).json({sucess: true})
 })
 
+
+
+// make a get fucntion for lower level officers that takes their UID and fetches the officers 
+// assigned location and then using that location as a filter shows the officer all the cases in their
+// assigned location
+
+//also make a similar one where officer can fetch the cases they are assigned to
+
