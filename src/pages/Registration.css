@@ -1,0 +1,84 @@
+.user-details,.victim-details, .crime-details, .blue-background{
+
+  
+    height: fit-content;
+  
+    display: flex;
+    flex-direction: column;
+  
+    
+  
+    margin: 30px auto;
+    padding: 30px;
+  
+    width: 70%;
+  
+    background-color: rgba(23, 0, 82, 0.973);
+    border-radius: 30px;
+  
+  }
+  
+  input, button, textarea, select{
+  
+  width: 20rem;
+  margin: 10px;
+  margin-left: 0px;
+  
+  border: none;
+  border-radius: 3px;
+  text-indent: 5px;
+  }
+  
+  textarea{
+    width: 80%;
+  }
+  
+  
+  
+  label{
+    color: white;
+    
+    justify-self: center;
+  }
+  
+  select{
+    margin-bottom: 10px;
+  }
+  
+  #is-witness-box{
+    margin: 5px;
+    width: auto;
+  
+    align-self: center;
+    justify-self: center;
+  }
+  
+  h3{
+    color: aliceblue;
+    text-decoration:underline;
+  }
+  
+  .App{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  
+  form{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #submit-btn{
+  
+    width: 10rem;
+    height: 2rem;
+  
+    background-color: blue;
+    color: aliceblue;
+  
+    border-radius: 7px;
+  
+    align-self: center;
+  }

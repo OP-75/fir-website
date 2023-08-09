@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 
 const mongoose = require('mongoose')
-const UserDetails = require('./mongoose-schema')
+const {CaseModel,OfficerModel} = require('./mongoose-schema')
 
 const app = express()
 
@@ -35,7 +35,7 @@ app.post("/register",async (req,res)=>{
 
     console.log(data);
     
-    const details = new UserDetails(data)
+    const details = new CaseModel(data)
     console.log(details);
     try {
         const mongooseDoc = await details.save()
@@ -53,11 +53,11 @@ app.put("/register/:objId",async (req,res)=>{
 
     console.log(data);
     
-    const details = new UserDetails(data)
+    const details = new CaseModel(data)
     console.log(details);
     try {
         //see the docs for more
-        const mongooseDoc = await UserDetails.findByIdAndUpdate(objId, data)
+        const mongooseDoc = await CaseModel.findByIdAndUpdate(objId, data)
         res.status(202).json({sucess: true, data: mongooseDoc})
     } catch (error) {
         console.log(`Error wile saving or creatining the UserDetails object:: ${error}`);
@@ -71,7 +71,7 @@ app.delete("/register/:objId",async (req,res)=>{
 
     try {
         //see the docs for more details, param is the filter
-        const mongooseDoc = await UserDetails.deleteOne({_id: objId})
+        const mongooseDoc = await CaseModel.deleteOne({_id: objId})
         res.status(202).json({sucess: true, data: mongooseDoc})
     } catch (error) {
         console.log(`Error wile saving or creatining the UserDetails object:: ${error}`);
@@ -81,10 +81,21 @@ app.delete("/register/:objId",async (req,res)=>{
 })
 
 
-app.get("/register",(req,res)=>{
 
-    res.status(200).json({sucess: true})
+//get all data
+app.get("/register",async (req,res)=>{              
+    const result = await CaseModel.find()
+    res.status(200).json({sucess: true, result})
 })
+
+app.get("/register/:officerId",async (req,res)=>{   
+    
+    const {officerId} = req.params
+    
+    const result = await CaseModel.find()
+    res.status(200).json({sucess: true, result})
+})
+
 
 
 
