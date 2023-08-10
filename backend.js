@@ -30,7 +30,7 @@ connectToDb()
 
 
 
-app.post("/register",async (req,res)=>{
+app.post("/case",async (req,res)=>{
     const data = req.body;
 
     console.log(data);
@@ -42,11 +42,13 @@ app.post("/register",async (req,res)=>{
         res.status(201).json({sucess: true, data: mongooseDoc})
     } catch (error) {
         console.log(`Error wile saving or creatining the UserDetails object:: ${error}`);
+        //status 403 = invalid input
+        res.status(403).json({sucess: false, msg: "Invalid input"})
     }
     
 
 })
-app.put("/register/:objId",async (req,res)=>{
+app.put("/case/:objId",async (req,res)=>{
     const data = req.body;
 
     const {objId} = req.params
@@ -65,7 +67,7 @@ app.put("/register/:objId",async (req,res)=>{
     
 
 })
-app.delete("/register/:objId",async (req,res)=>{
+app.delete("/case/:objId",async (req,res)=>{
 
     const {objId} = req.params
 
@@ -83,12 +85,28 @@ app.delete("/register/:objId",async (req,res)=>{
 
 
 //get all data
-app.get("/register",async (req,res)=>{              
+app.get("/case",async (req,res)=>{              
     const result = await CaseModel.find()
     res.status(200).json({sucess: true, result})
 })
 
-app.get("/register/:officerId",async (req,res)=>{   
+app.get("/case/:caseId", async (req,res)=>{
+    
+    const caseId = req.params.caseId
+    
+    try {
+        const result = await CaseModel.findById(caseId)
+        res.status(200).json({sucess: true, result})
+    } catch (error) {
+        res.status(400).json({sucess: true, error: error})
+    }
+    
+})
+
+
+
+//get case assigned to a officer
+app.get("/case-of-officer/:officerId",async (req,res)=>{   
     
     const {officerId} = req.params
     

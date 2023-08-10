@@ -1,0 +1,41 @@
+
+
+
+.black-text{
+    color: black;
+    text-decoration: none;
+}
+
+
+
+
+#case-container{
+
+    height: 100vh;
+
+    background-color: blue;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+#contents{
+    
+    width: fit-content;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+    border-radius: 10px;
+
+    padding: 20px;
+}

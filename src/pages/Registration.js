@@ -4,6 +4,8 @@ import axios from "axios"
 
 import { useNavigate } from "react-router-dom";
 
+import Swa1 from 'sweetalert2'
+
 
 
 
@@ -28,8 +30,8 @@ export default function Registration() {
         'crimeArea':null,    
         'witnesses':null,
         
-        'assignedOfficer':null,
-        'caseStatus':null,
+        'assignedOfficer':'None',
+        'caseStatus':"Officer yet to be assigned",
       },[])
     
       const handleChange = (event)=>{
@@ -61,8 +63,6 @@ export default function Registration() {
           
           
           prevData[in_name] = inputVal;
-          
-    
           return prevData;
         })
       }
@@ -71,16 +71,31 @@ export default function Registration() {
       const naviagte = useNavigate();
       const handleSubmit = async (e)=>{
         e.preventDefault();
-        console.log(data);
+        
     
         try {
-          const response = await axios.post("http://localhost:5000/register",data);
+          const response = await axios.post("http://localhost:5000/case",data);
           console.log(response);
+          console.log(response.data.data._id);
 
-          
-          naviagte('/case-status')
+          const caseId = response.data.data._id
+
+          // window.alert(`Please note down ur case id: ${caseId}`)
+          Swa1.fire({
+            title: 'Your case was registered sucessfully, please note down your case ID:',
+            text: `Case ID: ${caseId}`,
+            type: 'success',
+          })
+
+          naviagte(`/case-status/${caseId
+          }`)
         } catch (error) {
           console.log(error);
+          Swa1.fire({
+            title: 'Failed to register your case',
+            text: `${error}, ${error.response.data.msg}`,
+            type: 'error',
+          })
         }
       }
     
@@ -94,12 +109,12 @@ export default function Registration() {
         <h3>Enter your details</h3>
     
         
-        <input type="text" name='userName' placeholder='Name' onChange={handleChange}/>
-        <input type="text" name='userAge' placeholder='Age' onChange={handleChange}/>
-        <input type="text" name='userGender' placeholder='Gender' onChange={handleChange}/>
-        <input type="text" name='userEmail' placeholder='Email' onChange={handleChange}/>
-        <input type="text" name='userNumber' placeholder='Phone Number' onChange={handleChange}/>
-        <input type="text" name='userAddress' placeholder='Address' onChange={handleChange}/>
+        <input type="text" name='userName' placeholder='Name' onChange={handleChange} required/>
+        <input type="text" name='userAge' placeholder='Age' onChange={handleChange} required/>
+        <input type="text" name='userGender' placeholder='Gender' onChange={handleChange} required/>
+        <input type="text" name='userEmail' placeholder='Email' onChange={handleChange} required/>
+        <input type="text" name='userNumber' placeholder='Phone Number' onChange={handleChange} required/>
+        <input type="text" name='userAddress' placeholder='Address' onChange={handleChange} required/>
     
         <label htmlFor="is-witness-box">I am the witness
         <input type="checkbox" name="userIsWitness" id="is-witness-box" onChange={handleChange}/>
@@ -127,7 +142,7 @@ export default function Registration() {
         <h3>Enter case details</h3>
     
         <label htmlFor="">Select type of crime: <br />
-        <select name="crimeType" onChange={handleChange}>
+        <select name="crimeType" onChange={handleChange} required>
         <option value="">Select crime</option>
           <option value="Theft">Theft</option>
           <option value="Fraud">Fraud</option>
@@ -136,12 +151,12 @@ export default function Registration() {
         </select>
         </label>
     
-        <input type="datetime-local" name='crimeDateTime' placeholder='Date and time of incident' onChange={handleChange}/>
+        <input type="datetime-local" name='crimeDateTime' placeholder='Date and time of incident' onChange={handleChange} required/>
         
-        <input type="text" name='crimeAddress' placeholder='Place of incident' onChange={handleChange}/>
+        <input type="text" name='crimeAddress' placeholder='Place of incident' onChange={handleChange} required/>
     
         <label htmlFor=""> Select the city of incidence: <br />
-        <select name="crimeArea" onChange={handleChange}>
+        <select name="crimeArea" onChange={handleChange} required>
           <option value="">Select area</option>
           <option value="Pune">Pune</option>
           <option value="Mumbai">Mumbai</option>

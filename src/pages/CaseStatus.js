@@ -1,11 +1,50 @@
-import React from "react";
-import router from 'react-router-dom'
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import "./CaseStatus.css";
 
 export default function CaseStatus() {
-    return(
-        <>
-            <h1>This is case status page</h1>
-        </>
-    );
-}
+  // gets the route parameter (caseId) -- route param is /case-status/:caseId , here "caseId" is route param
+  const { caseId } = useParams();
 
+  const [status, setStatus] = useState(
+    {
+      assignedOfficer: null,
+      caseStatus: null,
+    });
+
+  const [loading, setLoading] = useState(true);
+
+  React.useEffect(() => {
+    // use effect call backs should be async to prevent race conditions
+    async function fetchAndSetStatus() {
+      try {
+        const resData = await axios.get(`http://localhost:5000/case/${caseId}`);
+
+        setStatus({
+          assignedOfficer: resData.data.result.assignedOfficer,
+          caseStatus: resData.data.result.caseStatus,
+        });
+      } catch (error) {
+        console.log(`Error while loading status`);
+      }
+      setLoading(false);
+    }
+    fetchAndSetStatus();
+  },[caseId]);
+  //IMP be sure to put [] as an argumet to useEffect otherwise it'll run after every render i.e infinitely
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div id="case-container">
+      <div id="contents">
+        <h1 className="black-text">Case ID: {caseId}</h1>
+        <h3 className="black-text">Assigned Officer: {status.assignedOfficer}</h3>
+        <h3 className="black-text">Case Status: {status.caseStatus}</h3>
+      </div>
+    </div>
+  );
+}
