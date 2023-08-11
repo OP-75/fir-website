@@ -110,15 +110,7 @@ const officerDetailsSchema = new Schema({
         required: true,
     }, 
     
-    'officerGender': {
-        type: String,
-        required: true,
-    }, 
     'officerEmail': {
-        type: String,
-        required: true,
-    }, 
-    'officerNumber': {
         type: String,
         required: true,
     }, 

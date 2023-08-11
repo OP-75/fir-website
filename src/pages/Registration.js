@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 import Swa1 from 'sweetalert2'
 
+import servicingLocations from './data/officerAreas'
+
 
 
 
@@ -101,7 +103,7 @@ export default function Registration() {
     
       return (
         // Below is a fragment component ie an empty wrapper
-        <> 
+        <div className="registration"> 
           
         <form onSubmit={handleSubmit}>
     
@@ -157,11 +159,14 @@ export default function Registration() {
     
         <label htmlFor=""> Select the city of incidence: <br />
         <select name="crimeArea" onChange={handleChange} required>
-          <option value="">Select area</option>
+          {/* <option value="">Select area</option>
           <option value="Pune">Pune</option>
           <option value="Mumbai">Mumbai</option>
           <option value="Nasik">Nasik</option>
-          <option value="Jalgao">Jalgao</option>
+          <option value="Jalgao">Jalgao</option> */}
+          {/* Made a arr so that the areas here and of the officers will match */}
+
+          {servicingLocations}
         </select>
         </label>
     
@@ -172,7 +177,7 @@ export default function Registration() {
         <input type="submit" value="Submit" id='submit-btn'/>
         </form>
     
-        </>
+        </div>
       );
 }
 

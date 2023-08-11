@@ -18,7 +18,7 @@
   
   }
   
-  input, button, textarea, select{
+  .registration input, .registration button, .registration textarea, .registration select{
   
   width: 20rem;
   margin: 10px;
@@ -29,19 +29,19 @@
   text-indent: 5px;
   }
   
-  textarea{
+  .registration textarea{
     width: 80%;
   }
   
   
   
-  label{
+  .registration label{
     color: white;
     
     justify-self: center;
   }
   
-  select{
+  .registration select{
     margin-bottom: 10px;
   }
   
@@ -53,7 +53,7 @@
     justify-self: center;
   }
   
-  h3{
+  .registration h3{
     color: aliceblue;
     text-decoration:underline;
   }
@@ -65,7 +65,7 @@
   
   
   
-  form{
+  .registration form{
     display: flex;
     flex-direction: column;
   }
