@@ -7,8 +7,12 @@ export default function EditButton(props) {
 
     const navigate = useNavigate();
 
+
+
     function handleClick(){
         navigate(`/cases/edit/${props.caseId}`);
+
+        
     }
 
     return(

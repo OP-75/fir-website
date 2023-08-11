@@ -12,6 +12,8 @@ router.get("/case",async (req,res)=>{
     res.status(200).json({sucess: true, result})
 })
 
+
+
 router.get("/case/:caseId", async (req,res)=>{
     
     const caseId = req.params.caseId
@@ -29,14 +31,14 @@ router.get("/case/:caseId", async (req,res)=>{
 
 //get case assigned to a officer
 router.get("/case-of-officer/:officerId",async (req,res)=>{   
-    
-    const {officerId} = req.params
-    
-    const result = await CaseModel.find()
-    res.status(200).json({sucess: true, result})
+    res.status(404).send(`Page under construction`)
 })
 
 
+router.get("/officer",async (req,res)=>{              
+    const result = await OfficerModel.find()
+    res.status(200).json({sucess: true, result: result})
+})
 
 
 // make a get fucntion for lower level officers that takes their UID and fetches the officers 

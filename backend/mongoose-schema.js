@@ -6,26 +6,32 @@ const userDetailsSchema = new Schema({
     'userName': {
         type: String,
         required: true,
+        validate: (value)=> value!=='',
     },
     'userAge': {
         type: String,
         required: true,
+        validate: (value)=> value!=='',
     }, 
     'userGender': {
         type: String,
         required: true,
+        validate: (value)=> value!=='',
     }, 
     'userEmail': {
         type: String,
         required: true,
+        validate: (value)=> value!=='',
     }, 
     'userNumber': {
         type: String,
         required: true,
+        validate: (value)=> value!=='',
     }, 
     'userAddress': {
         type: String,
         required: true,
+        validate: (value)=> value!=='',
     },
     
     
@@ -61,10 +67,12 @@ const userDetailsSchema = new Schema({
     'crimeDateTime':{
         type: String,
         required: true,
+        validate: (value)=> value!=='',
     },    
     'crimeAddress':{
         type: String,
         required: true,
+        validate: (value)=> value!=='',
     },    
     'crimeArea':{
         type: String,
@@ -103,21 +111,31 @@ const officerDetailsSchema = new Schema({
     'officerName': {
         type: String,
         required: true,
+        validate: (value)=> value!=='',
     },
 
     'officerRank': {
         type: String,
         required: true,
+        validate: (value)=> value!=='',
     }, 
     
     'officerEmail': {
         type: String,
         required: true,
+        validate: (value)=> value!=='',
     }, 
 
     "officerDesignatedArea":{
         type: String,
         required: true,
+        validate: (value)=> value!=='',
+    },
+
+    "officerPassword":{
+        type: String,
+        required: false,
+        default: "password",
     }
      
 })

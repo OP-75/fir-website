@@ -12,7 +12,7 @@ router.post("/case",async (req,res)=>{
     // console.log(caseDocument);
     try {
         const mongooseDoc = await caseDocument.save()
-        res.status(201).json({sucess: true, data: mongooseDoc})
+        res.status(201).json({sucess: true, result: mongooseDoc})
     } catch (error) {
         console.log(`Error wile saving or creatining the UserDetails object:: ${error}`);
         //status 403 = invalid input
@@ -31,10 +31,10 @@ router.post("/officer", async (req,res)=>{
 
     try {
         const result = await officerDocument.save();
-        res.send(201).json({sucess: true, result: result})
+        return res.status(201).json({sucess: true, result: result})
     } catch (error) {
         console.log(error);
-        res.status(403).json({sucess: false, error: error, msg: "Invalid input"})
+        return res.status(403).json({sucess: false, error: error, msg: "Invalid input"})
     }
 
 

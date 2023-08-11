@@ -52,6 +52,10 @@ export default function Registration() {
         else{
           console.log(`${in_name} : ${inputVal}`);
         }
+
+        if(inputVal===""){
+          inputVal = null
+        }
         
     
         setData((prevData)=>{
@@ -78,19 +82,24 @@ export default function Registration() {
         try {
           const response = await axios.post("http://localhost:5000/case",data);
           console.log(response);
-          console.log(response.data.data._id);
-
-          const caseId = response.data.data._id
-
-          // window.alert(`Please note down ur case id: ${caseId}`)
-          Swa1.fire({
-            title: 'Your case was registered sucessfully, please note down your case ID:',
-            text: `Case ID: ${caseId}`,
-            type: 'success',
-          })
-
-          naviagte(`/case-status/${caseId
-          }`)
+          if (response !== undefined) {
+            const caseId = response.data.result._id;
+    
+            Swa1.fire({
+              title: "Officer registered sucessfully",
+              text: `Officer ID: ${caseId}`,
+              type: "success",
+            });
+            naviagte(`/case-status/${caseId}`)
+          } else {
+            // Handle the case when the response does not have the expected structure
+            Swa1.fire({
+              title: "Error registering officer",
+              text: "The server response is missing the expected data.",
+              type: "error",
+            });
+          }
+          
         } catch (error) {
           console.log(error);
           Swa1.fire({
