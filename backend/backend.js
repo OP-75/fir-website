@@ -12,9 +12,6 @@ const loginLogoutMethods = require("./login-logout");
 
 const session = require("express-session");
 
-//IMP!!! U have to use session file store to access session variable in router.get, router.post etc files
-const FileStore = require('session-file-store')(session)
-
 const app = express();
 
 app.use(cors({

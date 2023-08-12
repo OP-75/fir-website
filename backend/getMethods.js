@@ -8,7 +8,8 @@ const router = express.Router()
 //get all data according to officers rank, ie if constable -> return cases in their are, if commissioner -> return all cases
 
 router.get("/cases",async (req,res)=>{
-    console.log(`${req.session.user} is the id`);
+    
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
     try {
   
         if(!req.session.user){
