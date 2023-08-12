@@ -24,7 +24,7 @@ export default function CasesList() {
 
         async function fetchCases(params) {
             try {
-                const response = await axios.get("http://localhost:5000/officer")
+                const response = await axios.get("http://localhost:5000/officer",{ withCredentials: true })
                 console.log(response);
                 const {result} = response.data
 

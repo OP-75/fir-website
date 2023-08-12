@@ -39,7 +39,7 @@ export default function RegisterNewOfficer(params) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/officer", data);
+      const response = await axios.post("http://localhost:5000/officer", data,{ withCredentials: true });
 
       if (response !== undefined) {
         console.log(response);
@@ -68,9 +68,15 @@ export default function RegisterNewOfficer(params) {
     }
   };
 
+  const officerRankJSX = [
+    <option value="">Select rank</option>,
+    <option value="Constable">Constable</option>,
+    <option value="Commisioner">Commisioner</option>,
+  ]
+
   return (
     <div>
-      <form action="">
+      <form>
         <input
           type="text"
           placeholder="Officer name"
@@ -79,9 +85,7 @@ export default function RegisterNewOfficer(params) {
           required
         />
         <select name="officerRank" id="officer-rank" onChange={handleChange}>
-          <option value="">Select rank</option>
-          <option value="Constable">Constable</option>
-          <option value="Commisioner">Commisioner</option>
+          {officerRankJSX}
         </select>
         <input
           type="email"

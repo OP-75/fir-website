@@ -19,7 +19,7 @@ export default function CaseStatus() {
     // use effect call backs should be async to prevent race conditions
     async function fetchAndSetStatus() {
       try {
-        const resData = await axios.get(`http://localhost:5000/case/${caseId}`);
+        const resData = await axios.get(`http://localhost:5000/case/${caseId}`, { withCredentials: true });
 
         setStatus({
           assignedOfficer: resData.data.result.assignedOfficer,

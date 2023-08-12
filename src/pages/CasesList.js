@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './CasesList.css'
 
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 import { AiFillEdit } from "react-icons/ai";
 import { IconContext } from "react-icons";
 
@@ -12,14 +13,18 @@ export default function CasesList() {
 
 
     const [casesList, setCasesList] = useState(null)
-    const result = null;
+    // const result = null;
 
+    const navigate = useNavigate()
     useEffect(()=>{
 
         async function fetchCases(params) {
             try {
-                const response = await axios.get("http://localhost:5000/case")
+                const response = await axios.get("http://localhost:5000/cases",{ withCredentials: true })
                 console.log(response);
+                if (!response) {
+                    return;
+                }
                 const {result} = response.data
 
                 const casesJsx = result.map((item)=>{
@@ -36,7 +41,6 @@ export default function CasesList() {
                             <td className="edit-button"><Link to={`/cases/edit/${item._id}`}><IconContext.Provider value={{ color: 'black', size: '15px' }}>
                                 <AiFillEdit/>
                                 </IconContext.Provider></Link></td>
-
                         </tr>
                     )
                 });
@@ -45,7 +49,10 @@ export default function CasesList() {
 
             } catch (error) {
                 console.log(error);
-                setCasesList(error);
+                if(error.response.data.msg==="Please login"){
+                        window.alert("Please login")
+                        navigate("/login")
+                }
             }
 
             

@@ -5,14 +5,37 @@ const router = express.Router()
 
 
 
+//get all data according to officers rank, ie if constable -> return cases in their are, if commissioner -> return all cases
 
-//get all data
-router.get("/case",async (req,res)=>{              
-    const result = await CaseModel.find()
-    res.status(200).json({sucess: true, result})
-})
-
-
+router.get("/cases",async (req,res)=>{
+    console.log(`${req.session.user} is the id`);
+    try {
+  
+        if(!req.session.user){
+            return res.status(401).json({sucess: false, msg: "Please login"})
+        }
+        
+        const officerDoc = await OfficerModel.findById(req.session.user)
+        console.log(`User: ${officerDoc.officerRank} requests all cases from backed`);
+        if(officerDoc.officerRank==="Commisioner"){
+            const result = await CaseModel.find()
+            res.status(200).json({sucess: true, result})
+        }
+        else if(officerDoc.officerRank==="Constable"){
+            const result = await CaseModel.find({crimeArea: officerDoc.officerDesignatedArea})
+            res.status(200).json({sucess: true, result})
+        }
+        else{
+            res.status(404).json({sucess: false, msg: "request unsucessful"})
+        }
+  
+    } catch (error) {
+        res.status(404).json({sucess: false, error:error, msg: "request unsucessful"})
+    }
+    
+    
+  })
+  
 
 router.get("/case/:caseId", async (req,res)=>{
     

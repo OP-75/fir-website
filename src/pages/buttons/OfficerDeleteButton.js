@@ -4,7 +4,7 @@ import axios from "axios";
 export default function OfficerDeleteButton(props) {
   async function handleClick() {
     try {
-      await axios.delete(`http://localhost:5000/officer/${props.officerId}`);
+      await axios.delete(`http://localhost:5000/officer/${props.officerId}`,{ withCredentials: true });
 
       window.location.reload()
     } catch (error) {
