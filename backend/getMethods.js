@@ -12,7 +12,7 @@ router.get("/cases",async (req,res)=>{
     res.header("Cache-Control", "no-cache, no-store, must-revalidate");
     try {
   
-        if(!req.session.user){
+        if(!req.session.user || req.session.user===null){
             return res.status(401).json({sucess: false, msg: "Please login"})
         }
         
@@ -20,11 +20,11 @@ router.get("/cases",async (req,res)=>{
         console.log(`User: ${officerDoc.officerRank} requests all cases from backed`);
         if(officerDoc.officerRank==="Commisioner"){
             const result = await CaseModel.find()
-            res.status(200).json({sucess: true, result})
+            res.status(200).json({sucess: true, result, sessionId: req.session.id, user: req.session.user})
         }
         else if(officerDoc.officerRank==="Constable"){
             const result = await CaseModel.find({crimeArea: officerDoc.officerDesignatedArea})
-            res.status(200).json({sucess: true, result})
+            res.status(200).json({sucess: true, result, sessionId: req.session.id, user: req.session.user})
         }
         else{
             res.status(404).json({sucess: false, msg: "request unsucessful"})

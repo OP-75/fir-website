@@ -25,7 +25,7 @@ app.use(
   session({
     secret: "This secret key is used to very and sign session IDs I think",
     resave: true,
-    saveUninitialized: true,
+    saveUninitialized: false,
   })
 );
 

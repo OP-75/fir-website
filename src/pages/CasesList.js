@@ -61,6 +61,7 @@ export default function CasesList() {
   }, []);
 
   function logout() {
+    
     axios
       .post("http://localhost:5000/logout", { withCredentials: true })
       .then((response) => {

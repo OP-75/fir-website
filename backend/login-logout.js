@@ -47,7 +47,7 @@ router.all("/login", async (req, res, next) => {
         if (err) return next(err);
         return res
           .status(202)
-          .json({ loggedIn: true, currentUser: req.session.user });
+          .json({ loggedIn: true, currentUser: req.session.user, sessionId: req.session.id });
       });
     });
   } else {
@@ -66,23 +66,29 @@ router.all("/logout", (req, res, next) => {
   // does not have a logged in user
   req.session.user = null;
   req.session.save((err)=>{
-    if (err) next(err)
+    if (err) {
+      next(err)
+      console.warn(err)
+    }
     
     console.log(req.session.user);
 
  
-
+    req.session.regenerate((err)=>{
+      if (err) {
+        next(err)
+        console.warn(err)
+      }
+    
   // regenerate the session, which is good practice to help
   // guard against forms of session fixation
   
-  req.session.regenerate(function (err) {
-    if (err) next(err)
-    const newSessionId = req.session.id
-    req.session.user = null;
-
-    res.status(200).json({ success: true , newSessionId: newSessionId, user: req.session.user});
+    const newSessionId = req?.session?.id
+    res.clearCookie('connect.sid');
+    res.status(200).json({ success: true , newSessionId: newSessionId, user: req?.session?.user});
     console.log("Logout process completed at backend  at backend");
-  })
+
+});
 
 
 });
