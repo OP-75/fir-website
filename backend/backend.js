@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(
   session({
     secret: "This secret key is used to very and sign session IDs I think",
-    resave: false,
+    resave: true,
     saveUninitialized: true,
   })
 );

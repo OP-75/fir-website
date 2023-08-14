@@ -60,27 +60,32 @@ router.all("/login", async (req, res, next) => {
 router.all("/logout", (req, res, next) => {
   // logout logic
   console.log("Logout process began at backend");
-  console.log(req.session);
+  console.log(req.session.user);
   // clear the user from the session object and save.
   // this will ensure that re-using the old session id
   // does not have a logged in user
   req.session.user = null;
+  req.session.save((err)=>{
+    if (err) next(err)
+    
+    console.log(req.session.user);
 
-  const prevSessionId = req.session;
-
+ 
 
   // regenerate the session, which is good practice to help
   // guard against forms of session fixation
   
-
   req.session.regenerate(function (err) {
     if (err) next(err)
     const newSessionId = req.session.id
     req.session.user = null;
 
-    res.status(200).json({ success: true , prevSessionId: prevSessionId, newSessionId: newSessionId, user: req.session.user});
+    res.status(200).json({ success: true , newSessionId: newSessionId, user: req.session.user});
     console.log("Logout process completed at backend  at backend");
   })
+
+
+});
 
   
 });
