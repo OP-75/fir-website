@@ -39,12 +39,13 @@ router.all("/login", async (req, res, next) => {
 
       // store user information in session, typically a user id
       req.session.user = user;
-      console.log(req.session.user);
-
+      
       // save the session before redirection to ensure page
       // load does not happen before session is saved
       req.session.save(function (err) {
         if (err) return next(err);
+
+        console.log(`User with session id: ${req.session.id} has logged in as ${req.session.user}`);
         return res
           .status(202)
           .json({ loggedIn: true, currentUser: req.session.user, sessionId: req.session.id });
@@ -59,34 +60,32 @@ router.all("/login", async (req, res, next) => {
 
 router.all("/logout", (req, res, next) => {
   // logout logic
-  console.log("Logout process began at backend");
-  console.log(req.session.user);
-  // clear the user from the session object and save.
-  // this will ensure that re-using the old session id
-  // does not have a logged in user
+  console.log("Logout process began at backend for session id",req.session.id);
+
+
+  // // clear the user from the session object and save.
+  // // this will ensure that re-using the old session id
+  // // does not have a logged in user
   req.session.user = null;
   req.session.save((err)=>{
     if (err) {
       next(err)
-      console.warn(err)
+      console.error(err)
     }
     
-    console.log(req.session.user);
-
- 
+    
+    // regenerate the session, which is good practice to help
+    // guard against forms of session fixation
     req.session.regenerate((err)=>{
       if (err) {
         next(err)
         console.warn(err)
       }
     
-  // regenerate the session, which is good practice to help
-  // guard against forms of session fixation
-  
-    const newSessionId = req?.session?.id
-    res.clearCookie('connect.sid');
-    res.status(200).json({ success: true , newSessionId: newSessionId, user: req?.session?.user});
+      
     console.log("Logout process completed at backend  at backend");
+    return  res.status(200).json({ success: true , newSessionId: req?.session?.user, user: req?.session?.user}); 
+  })
 
 });
 
@@ -94,6 +93,6 @@ router.all("/logout", (req, res, next) => {
 });
 
   
-});
+
 
 module.exports = router;

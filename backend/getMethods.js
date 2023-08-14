@@ -8,16 +8,15 @@ const router = express.Router()
 //get all data according to officers rank, ie if constable -> return cases in their are, if commissioner -> return all cases
 
 router.get("/cases",async (req,res)=>{
-    
-    res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+    console.log(`User with session id: ${req.session?.id} has requested /cases`);
     try {
   
-        if(!req.session.user || req.session.user===null){
+        if(!req.session.user){
             return res.status(401).json({sucess: false, msg: "Please login"})
         }
         
         const officerDoc = await OfficerModel.findById(req.session.user)
-        console.log(`User: ${officerDoc.officerRank} requests all cases from backed`);
+        // console.log(`User: ${officerDoc.officerRank} requests all cases from backed`);
         if(officerDoc.officerRank==="Commisioner"){
             const result = await CaseModel.find()
             res.status(200).json({sucess: true, result, sessionId: req.session.id, user: req.session.user})
