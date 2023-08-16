@@ -35,7 +35,7 @@ export default function Login(){
                 navigate('/cases-list')
             }
             else{
-                window.alert(`Cant login: ${response?.msg}`)
+                window.alert(`Cant login: ${response?.data.msg}`)
                 return;
             }
 

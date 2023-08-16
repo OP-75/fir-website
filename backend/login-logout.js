@@ -53,7 +53,7 @@ router.all("/login", async (req, res, next) => {
     });
   } else {
     return res
-      .status(401)
+      .status(200)
       .json({ loggedIn: false, msg: "Wrong username or password" });
   }
 });
