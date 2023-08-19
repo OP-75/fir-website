@@ -1,0 +1,39 @@
+/* Try this color: - background-color: #c7ddff; */
+.box-1{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    z-index: 1;
+    /* background-color: #97bcea; */
+    background-color: #2fc7ff;
+}
+.topHeader{ 
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    justify-content: flex-start;
+}
+.myNavBar{
+    display: flex;
+    align-items: center;
+    margin-right: 4%;
+    gap: 3em;
+}
+.navElement{
+    list-style: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+}
+.navElement:hover{
+    background-color: #221044;
+    color:whitesmoke;
+}
+#login{
+    background-color: #221044;
+    color:whitesmoke;
+}
+.welcomeMessage{
+    font-family: Raleway;
+}

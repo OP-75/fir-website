@@ -12,11 +12,13 @@ import CasesList from "./pages/CasesList";
 import RegisterNewOfficer from "./pages/RegisterNewOfficer";
 import OfficerList from './pages/OfficerList'
 import Login from "./pages/Login";
+import Homepage from "./pages/Home Page/Homepage";
 
 function App() {
   return (
     <Routes>
-      <Route exact path="/" element={ <Registration/> } />
+      <Route exact path="/" element={ <Homepage /> } />
+      <Route exact path="/register" element={ <Registration/> } />
       <Route exact path="/case-status/:caseId" element={ <CaseStatus /> } />
       <Route exact path="/cases-list" element={ <CasesList /> } />
       <Route exact path="/register-officer" element={ <RegisterNewOfficer /> } />

@@ -1,84 +1,65 @@
-.user-details,.victim-details, .crime-details, .blue-background{
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Oswald:wght@300&family=Poppins&family=Raleway:wght@300&display=swap');
 
-  
-    height: fit-content;
-  
+body{
+    /* background: url('https://i0.wp.com/www.goodwin.edu/enews/wp-content/uploads/2019/09/What-Does-it-Take-Police-Officer-Qualities-and-Qualifications.jpg?fit=1920%2C904&ssl=1'); */
+    background: url('./Home\ Page/SP.jpg');
+    background-repeat:inherit;
+    min-width: 100%;
+    font-weight: bold;
+    height: max-content;
+}
+.firForm{
+    /* font-family: 'Raleway', sans-serif; */
+
+}
+form{
+    background-color: #fff;
+    opacity: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 40px;
+    margin: 45px 180px;
+    border: 2px solid;
+    padding: 0;
+}
+
+.col-1, .col-2{
     display: flex;
     flex-direction: column;
-  
-    
-  
-    margin: 30px auto;
-    padding: 30px;
-  
-    width: 70%;
-  
-    background-color: rgba(23, 0, 82, 0.973);
-    border-radius: 30px;
-  
-  }
-  
-  .registration input, .registration button, .registration textarea, .registration select{
-  
-  width: 20rem;
-  margin: 10px;
-  margin-left: 0px;
-  
-  border: none;
-  border-radius: 3px;
-  text-indent: 5px;
-  }
-  
-  .registration textarea{
-    width: 80%;
-  }
-  
-  
-  
-  .registration label{
-    color: white;
-    
-    justify-self: center;
-  }
-  
-  .registration select{
-    margin-bottom: 10px;
-  }
-  
-  #is-witness-box{
-    margin: 5px;
-    width: auto;
-  
-    align-self: center;
-    justify-self: center;
-  }
-  
-  .registration h3{
-    color: aliceblue;
-    text-decoration:underline;
-  }
-  
-  .App{
-    display: flex;
-    flex-direction: column;
-  }
-  
-  
-  
-  .registration form{
-    display: flex;
-    flex-direction: column;
-  }
-  
-  #submit-btn{
-  
-    width: 10rem;
-    height: 2rem;
-  
-    background-color: blue;
-    color: aliceblue;
-  
-    border-radius: 7px;
-  
-    align-self: center;
-  }
+    align-items: center;
+    justify-content: center;
+    /* column-gap: 20px; */
+    row-gap: 10px;
+    margin: 25px 85px;
+}
+input, textarea, select{
+    width: 380px;
+    height: 40px;
+    box-sizing: border-box;
+    /* font-family: 'Raleway'; */
+    font-weight: 550;
+    background-color: #f7f7f7;
+}
+textarea{
+    resize: none;
+    height: 100px;
+    box-sizing: border-box;
+}
+
+textarea::placeholder, input::placeholder{
+    font-weight: 580;
+}
+button{
+    width: 100%;
+    height: 40px;
+    background-color: #c7dff4;
+}
+#disabledOpt{
+    color: grey;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

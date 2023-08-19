@@ -1,192 +1,272 @@
 import React from "react";
-import './Registration.css'
-import axios from "axios"
+import "./Registration.css";
+import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
 
-import Swa1 from 'sweetalert2'
+import Swa1 from "sweetalert2";
 
-import servicingLocations from './data/officerAreas'
+import servicingLocations from "./data/officerAreas";
 
-
-
+import { useState } from "react";
 
 export default function Registration() {
-    const [data,setData] = React.useState({
-        'userName': null,
-        'userAge': null, 
-        'userGender': null, 
-        'userEmail': null, 
-        'userNumber': null, 
-        'userAddress': null,
-        
-        'victimName':null,
-        'victimAge':null,
-        'victimGender':null,
-        'victimNumber':null,
-        'victimAddress':null,
-    
-        'crimeType':null,    
-        'crimeDateTime':null,    
-        'crimeAddress':null,    
-        'crimeArea':null,    
-        'witnesses':null,
-        
-        'assignedOfficer':'None',
-        'caseStatus':"Officer yet to be assigned",
-      },[])
-    
-      const handleChange = (event)=>{
-        let inputVal = event.target.value;
-        const in_name = event.target.name;
-    
-        if (event.target.type==="checkbox") {
-          if (event.target.checked) {
-            console.log(`Checkboxed is checked ,,, ${event.target.type}`);
-          } else {
-            console.log(`Checkboxed is unchecked,,, ${event.target.type}`);
-          }
-    
-          inputVal = event.target.checked
-        }
-        else{
-          console.log(`${in_name} : ${inputVal}`);
-        }
+  //imp u have to put useNavigate outside the handleSubmit(or any) function!!!
+  const naviagte = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = { ...userData, ...victimData, ...crimeData, additionalData };
+    console.log(data);
 
-        if(inputVal===""){
-          inputVal = null
-        }
+    try {
+      const response = await axios.post("http://localhost:5000/case", data);
+      console.log(response);
+      if (response !== undefined) {
+        const caseId = response.data.result._id;
         
-    
-        setData((prevData)=>{
-          //since the key is variable - you have to put it in [keyVariable] in the object (after spread ... operator ofcource)
-          //or you can modify prevData (tho thats not recommended!)
-    
-          // return {
-          // ...prevData,
-          // [in_name]: inputVal
-          // }
-          
-          
-          prevData[in_name] = inputVal;
-          return prevData;
-        })
+        //Swa1 = alert window
+        Swa1.fire({
+          title: "Officer registered sucessfully",
+          text: `Officer ID: ${caseId}`,
+          type: "success",
+        });
+        naviagte(`/case-status/${caseId}`);
+      } else {
+        // Handle the case when the response does not have the expected structure
+        Swa1.fire({
+          title: "Error registering officer",
+          text: "The server response is missing the expected data.",
+          type: "error",
+        });
       }
-      
-      //imp u have to put useNavigate outside the handleSubmit(or any) function!!!
-      const naviagte = useNavigate();
-      const handleSubmit = async (e)=>{
-        e.preventDefault();
-        
-    
-        try {
-          const response = await axios.post("http://localhost:5000/case",data);
-          console.log(response);
-          if (response !== undefined) {
-            const caseId = response.data.result._id;
-    
-            Swa1.fire({
-              title: "Officer registered sucessfully",
-              text: `Officer ID: ${caseId}`,
-              type: "success",
-            });
-            naviagte(`/case-status/${caseId}`)
-          } else {
-            // Handle the case when the response does not have the expected structure
-            Swa1.fire({
-              title: "Error registering officer",
-              text: "The server response is missing the expected data.",
-              type: "error",
-            });
-          }
-          
-        } catch (error) {
-          console.log(error);
-          Swa1.fire({
-            title: 'Failed to register your case',
-            text: `${error}, ${error.response.data.msg}`,
-            type: 'error',
-          })
-        }
-      }
-    
-      return (
-        // Below is a fragment component ie an empty wrapper
-        <div className="registration"> 
-          
-        <form onSubmit={handleSubmit}>
-    
-        <div className='user-details'>
-        <h3>Enter your details</h3>
-    
-        
-        <input type="text" name='userName' placeholder='Name' onChange={handleChange} required/>
-        <input type="text" name='userAge' placeholder='Age' onChange={handleChange} required/>
-        <input type="text" name='userGender' placeholder='Gender' onChange={handleChange} required/>
-        <input type="text" name='userEmail' placeholder='Email' onChange={handleChange} required/>
-        <input type="text" name='userNumber' placeholder='Phone Number' onChange={handleChange} required/>
-        <input type="text" name='userAddress' placeholder='Address' onChange={handleChange} required/>
-    
-        <label htmlFor="is-witness-box">I am the witness
-        <input type="checkbox" name="userIsWitness" id="is-witness-box" onChange={handleChange}/>
-        </label>
-        
-        </div>
-    
-    
-    
-        <div className='victim-details'>
-        <h3>Enter victim's details</h3>
-        {/* All victim details should be optional */}
-        <input type="text" name='victimName' placeholder='Victim Name' onChange={handleChange}/>
-        <input type="text" name='victimAge' placeholder='Victim Age' onChange={handleChange}/>
-        <input type="text" name='victimGender' placeholder='Victim Gender' onChange={handleChange}/>
-        <input type="text" name='victimNumber' placeholder='Victim Phone Number' onChange={handleChange}/>
-        <input type="text" name='victimAddress' placeholder='Victim Address' onChange={handleChange}/>
-        </div>
-    
-    
-    
-    
-    
-        <div className='crime-details'>
-        <h3>Enter case details</h3>
-    
-        <label htmlFor="">Select type of crime: <br />
-        <select name="crimeType" onChange={handleChange} required>
-        <option value="">Select crime</option>
-          <option value="Theft">Theft</option>
-          <option value="Fraud">Fraud</option>
-          <option value="Extortion">Extortion</option>
-          <option value="Assault">Assault</option>
-        </select>
-        </label>
-    
-        <input type="datetime-local" name='crimeDateTime' placeholder='Date and time of incident' onChange={handleChange} required/>
-        
-        <input type="text" name='crimeAddress' placeholder='Place of incident' onChange={handleChange} required/>
-    
-        <label htmlFor=""> Select the city of incidence: <br />
-        <select name="crimeArea" onChange={handleChange} required>
-          {/* <option value="">Select area</option>
-          <option value="Pune">Pune</option>
-          <option value="Mumbai">Mumbai</option>
-          <option value="Nasik">Nasik</option>
-          <option value="Jalgao">Jalgao</option> */}
-          {/* Made a arr so that the areas here and of the officers will match */}
+    } catch (error) {
+      console.log(error);
+      Swa1.fire({
+        title: "Failed to register your case",
+        text: `${error}, ${error.response.data.msg}`,
+        type: "error",
+      });
+    }
 
-          {servicingLocations}
-        </select>
-        </label>
-    
-        <textarea name="witnesses" id="" cols="30" rows="10" placeholder='Names of witnesses if any'></textarea>
+    console.log("Form submitted:", {
+      userData,
+      victimData,
+      crimeData,
+      additionalData,
+    });
+  };
+
+  const [userData, setUserData] = useState({
+    userName: null,
+    userAge: null,
+    userGender: null,
+    userEmail: null,
+    userAddress: null,
+  });
+
+  const [victimData, setVictimData] = useState({
+    victimName: null,
+    victimAge: null,
+    victimGender: null,
+    victimNumber: null,
+    victimAddress: null,
+    victimRelation: null,
+  });
+
+  const [crimeData, setCrimeData] = useState({
+    crimeType: null,
+    crimeDateTime: null,
+    crimeArea: null,
+    crimeAddress: null,
+  });
+
+  const [additionalData, setAdditionalData] = useState({
+    proofOfCrime: null,
+    witnesses: null,
+    additionalInfo: "",
+  });
+
+  return (
+    <div className="firForm">
+      <form
+        onSubmit={(e) => {
+          handleSubmit(e);
+        }}
+      >
+        <div className="col-1">
+          <legend>Crime Details</legend>
+          <select
+            required
+            value={crimeData.crimeType}
+            onChange={(e) =>
+              setCrimeData({ ...crimeData, crimeType: e.target.value })
+            }
+          >
+            <option value="" disabled selected>
+              Crime Committed *
+            </option>
+            <option value="Theft">Theft</option>
+            <option value="Kidnapping">Kidnapping</option>
+            <option value="Murder">Murder</option>
+            <option value="Rape">Rape</option>
+            <option value="Cyber Crime">Cyber Crime</option>
+            <option value="Traffic">Traffic</option>
+            <option value="Lost and Found">Lost and Found</option>
+          </select>
+          <select
+            required
+            value={crimeData.crimeArea}
+            onChange={(e) =>
+              setCrimeData({ ...crimeData, crimeArea: e.target.value })
+            }
+          >
+            <option value="" disabled selected>
+              Place of Crime *
+            </option>
+            {servicingLocations}
+          </select>
+
+          <input
+            type="text"
+            placeholder="Crime Address"
+            value={crimeData.crimeAddress}
+            onChange={(e) =>
+              setCrimeData({ ...crimeData, crimeAddress: e.target.value })
+            }
+          />
+
+          <input
+            type="datetime-local"
+            placeholder="Date and Time of Crime"
+            value={crimeData.crimeDateTime}
+            onChange={(e) =>
+              setCrimeData({ ...crimeData, crimeDateTime: e.target.value })
+            }
+          />
+
+          <legend>Victim Details</legend>
+          <input
+            type="text"
+            placeholder="Victim Name *"
+            value={victimData.victimName}
+            onChange={(e) =>
+              setVictimData({ ...victimData, victimName: e.target.value })
+            }
+            required
+          />
+          <input
+            type="number"
+            placeholder="Victim Age"
+            value={victimData.victimAge}
+            onChange={(e) =>
+              setVictimData({ ...victimData, victimAge: e.target.value })
+            }
+          />
+          <select
+            value={victimData.victimGender}
+            onChange={(e) =>
+              setVictimData({ ...victimData, victimGender: e.target.value })
+            }
+          >
+            <option value="" disabled>
+              Victim's Gender
+            </option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <input
+            type="text"
+            placeholder="Family Member Relation *"
+            value={victimData.victimRelation}
+            onChange={(e) =>
+              setVictimData({ ...victimData, victimRelation: e.target.value })
+            }
+            required
+          />
         </div>
-    
-    
-        <input type="submit" value="Submit" id='submit-btn'/>
-        </form>
-    
+
+        <div className="col-2">
+          <legend>User Details</legend>
+          <input
+            type="text"
+            placeholder="User Name *"
+            value={userData.userName}
+            onChange={(e) =>
+              setUserData({ ...userData, userName: e.target.value })
+            }
+            required
+          />
+          <input
+            type="number"
+            placeholder="User Age *"
+            value={userData.userAge}
+            onChange={(e) =>
+              setUserData({ ...userData, userAge: e.target.value })
+            }
+            required
+          />
+          <select
+            value={userData.userGender}
+            onChange={(e) =>
+              setUserData({ ...userData, userGender: e.target.value })
+            }
+            required
+          >
+            <option value="" id="disabledOpt" disabled>
+              Your Gender
+            </option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+          <input
+            type="email"
+            placeholder="User Email *"
+            value={userData.userEmail}
+            onChange={(e) =>
+              setUserData({ ...userData, userEmail: e.target.value })
+            }
+            required
+          />
+
+          <legend>Additional Details</legend>
+          <input
+            type="file"
+            capture="user"
+            value={additionalData.proofOfCrime}
+            onChange={(e) =>
+              setAdditionalData({
+                ...additionalData,
+                proofOfCrime: e.target.value,
+              })
+            }
+          />
+          <input
+            type="text"
+            placeholder="Witness Name   (Type your own name if you are witness)"
+            value={additionalData.witnesses}
+            onChange={(e) =>
+              setAdditionalData({
+                ...additionalData,
+                witnesses: e.target.value,
+              })
+            }
+          />
+          <textarea
+            placeholder="Additional Info"
+            value={additionalData.additionalInfo}
+            onChange={(e) =>
+              setAdditionalData({
+                ...additionalData,
+                additionalInfo: e.target.value,
+              })
+            }
+          />
+          <button type="submit">Submit Complaint</button>
         </div>
-      );
+      </form>
+    </div>
+  );
 }
-

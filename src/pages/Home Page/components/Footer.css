@@ -1,0 +1,53 @@
+.topFooter{
+    background-color: black;
+    color: aliceblue;
+    position: relative;
+    top: 100%;
+    /* 
+    Remove the margin top afterwards, i added it for cards
+    */
+    margin-top: 80px;
+    padding: 35px;
+}
+
+.heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 15px;
+}
+
+.head h2,
+.head h5 {
+    margin: 0; 
+}
+
+.box{
+    margin: 0;
+    position: relative;
+    margin-left: 2%;
+    /* text-decoration: underline; */
+}
+
+.list li{
+    list-style: none;
+}
+
+.list a{
+    text-decoration: none;
+    color: gray;
+}
+
+.list a:hover{
+    color: white;
+}
+.column-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px; 
+}
+.box-2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

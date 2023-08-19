@@ -22,16 +22,6 @@ const userDetailsSchema = new Schema({
         type: String,
         required: true,
         validate: (value)=> value!=='',
-    }, 
-    'userNumber': {
-        type: String,
-        required: true,
-        validate: (value)=> value!=='',
-    }, 
-    'userAddress': {
-        type: String,
-        required: true,
-        validate: (value)=> value!=='',
     },
     
     
@@ -53,6 +43,10 @@ const userDetailsSchema = new Schema({
         required: false,
     },
     'victimAddress':{
+        type: String,
+        required: false,
+    },
+    'victimRelation':{
         type: String,
         required: false,
     },
