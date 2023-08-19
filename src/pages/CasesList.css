@@ -1,3 +1,7 @@
+body{
+  background-image: none;
+}
+
 table {
     font-size: 12px; 
     border-collapse: collapse; 
@@ -19,6 +23,7 @@ table {
 
     align-items: center;
     justify-content: center;
+
 }
 
 .edit-button{

@@ -19,11 +19,11 @@ function App() {
     <Routes>
       <Route exact path="/" element={ <Homepage /> } />
       <Route exact path="/register" element={ <Registration/> } />
-      <Route exact path="/case-status/:caseId" element={ <CaseStatus /> } />
-      <Route exact path="/cases-list" element={ <CasesList /> } />
-      <Route exact path="/register-officer" element={ <RegisterNewOfficer /> } />
-      <Route exact path="/all-officer" element={ <OfficerList /> } />
-      <Route exact path="/login" element={ <Login /> } />
+      <Route exact path="/case-status/:caseId" element={ <CaseStatus /> }  />
+      <Route exact path="/cases-list" element={ <CasesList /> }  />
+      <Route exact path="/register-officer" element={ <RegisterNewOfficer /> }  />
+      <Route exact path="/all-officer" element={ <OfficerList /> }  />
+      <Route exact path="/login" element={ <Login /> }  />
     </Routes>
 
     //  <Registration/>
