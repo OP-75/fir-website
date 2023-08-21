@@ -13,11 +13,6 @@ const userDetailsSchema = new Schema({
         required: true,
         validate: (value)=> value!=='',
     }, 
-    'userGender': {
-        type: String,
-        required: true,
-        validate: (value)=> value!=='',
-    }, 
     'userEmail': {
         type: String,
         required: true,

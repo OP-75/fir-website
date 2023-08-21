@@ -9,6 +9,8 @@ router.delete("/case/:objId",async (req,res)=>{
 
     const {objId} = req.params
 
+    console.log(`deleteion requested`);
+
     try {
         //see the docs for more details, param is the filter
         const mongooseDoc = await CaseModel.deleteOne({_id: objId})

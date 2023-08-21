@@ -7,12 +7,13 @@ import { AiFillEdit } from "react-icons/ai";
 import { IconContext } from "react-icons";
 
 export default function CasesList() {
-  const [casesList, setCasesList] = useState(null);
+  const [casesList, setCasesList] = useState([]);
   
   axios.defaults.withCredentials = true
 
 
   const navigate = useNavigate();
+  const [deleted, setDeleted] = useState([]);
   useEffect(() => {
     async function fetchCases(params) {
       try {
@@ -44,6 +45,9 @@ export default function CasesList() {
                   </IconContext.Provider>
                 </Link>
               </td>
+              <td className="delete-button">
+                <button name={item._id} id={item._id} onClick={handleDelete}>Delete</button>
+              </td>
             </tr>
           );
         });
@@ -59,7 +63,34 @@ export default function CasesList() {
     }
 
     fetchCases();
-  }, []);
+  }, [deleted]); //fetch cases everytime we add a deleted case to list
+
+
+
+  
+  async function handleDelete(e) {
+    const id = e.target.id;
+
+    try {
+      const axiosResponse = await axios.delete(`http://localhost:5000/case/${id}`);
+      if(axiosResponse.data.sucess){
+        console.log(`${id} deleted`);
+        setDeleted((prevDeleted)=>{
+          return [...prevDeleted, id];
+        });
+      }
+      else{
+        console.log(`Deletion of ${id} failed`);
+      }
+    } catch (error) {
+      console.log(`Deletion of ${id} failed,,, error: ${error}`);
+    }
+
+
+
+
+
+  }
 
   function logout() {
     
@@ -103,6 +134,7 @@ export default function CasesList() {
           <th>Assigned Officer</th>
           <th>Case Status</th>
           <th>Edit</th>
+          <th>Delete</th>
         </tr>
 
         {casesList}
