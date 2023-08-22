@@ -30,6 +30,7 @@ export default function CasesList() {
             <tr>
               <td>{item.userName}</td>
               <td>{item.victimName}</td>
+              <td>{item.crimeType}</td>
               <td>{item.crimeArea}</td>
               <td>{item.crimeAddress}</td>
               <td>{item.crimeDateTime}</td>
@@ -127,6 +128,7 @@ export default function CasesList() {
         <tr>
           <th>Complainant's name</th>
           <th>Victim's name</th>
+          <th>Crime</th>
           <th>City</th>
           <th>Adderss of Incident</th>
           <th>Time of Incident</th>
