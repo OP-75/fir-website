@@ -16,7 +16,7 @@ router.get("/cases",async (req,res)=>{
         }
         
         const officerDoc = await OfficerModel.findById(req.session.user)
-        // console.log(`User: ${officerDoc.officerRank} requests all cases from backed`);
+        
         if(officerDoc.officerRank==="Commisioner"){
             const result = await CaseModel.find()
             res.status(200).json({sucess: true, result, sessionId: req.session.id, user: req.session.user})
@@ -26,7 +26,7 @@ router.get("/cases",async (req,res)=>{
             res.status(200).json({sucess: true, result, sessionId: req.session.id, user: req.session.user})
         }
         else{
-            res.status(404).json({sucess: false, msg: "request unsucessful"})
+            res.status(401).json({sucess: false, msg: "request unsucessful, rank is unrecognized"})
         }
   
     } catch (error) {

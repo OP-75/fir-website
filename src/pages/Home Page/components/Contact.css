@@ -23,7 +23,7 @@
     flex: 4;
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
 }
 form{
     display: flex;

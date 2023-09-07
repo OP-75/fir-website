@@ -9,7 +9,7 @@ export default function Login(){
         const in_name = event.target.name;
     
         if(inputVal===""){
-            inputVal = null
+          inputVal = null
         }
     
         setData((prevData) => {
@@ -26,7 +26,7 @@ export default function Login(){
             const response = await axios.post("http://localhost:5000/login", data, { withCredentials: true });
             console.log(response);
 
-            if(response==undefined){
+            if(response===undefined){
                 window.alert("Error no response form server")
                 return;
             }

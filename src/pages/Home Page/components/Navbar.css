@@ -26,11 +26,23 @@
     padding: 8px;
     border-radius: 5px;
 }
+
+.navElement a{
+    text-decoration: none;
+    color: black;
+    padding: 8px;
+    border-radius: 5px;
+}
+
 .navElement:hover{
     background-color: #221044;
     color:whitesmoke;
 }
-#login{
+.navElement a:hover{
+    background-color: #221044;
+    color:whitesmoke;
+}
+#login a{
     background-color: #221044;
     color:whitesmoke;
 }
