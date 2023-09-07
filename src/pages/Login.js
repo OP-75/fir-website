@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import "./Login.css"
+
 export default function Login(){
 
     function handleChange (event) {

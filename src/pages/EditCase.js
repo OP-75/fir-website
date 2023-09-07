@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 
-//this page is work in progress
+import "./EditCase.css"
 
 export default function EditCase() {
   //to get route parameter (:caseId) use "useParams"
@@ -114,7 +114,7 @@ export default function EditCase() {
   return (
     <div className="edit-case">
       <h4>Case ID: {caseId}</h4>
-      <form onSubmit={handleSubmit}>
+      <form className="edit-case" onSubmit={handleSubmit}>
         <input
           type="text"
           name="assignedOfficer"
@@ -123,7 +123,7 @@ export default function EditCase() {
           onChange={handleChange}
           disabled={isCurrentUserAssignedOfficer}
         />
-        <label htmlFor="assignMe">Assign me the officer</label>
+        <label htmlFor="assignMe">Assign me as officer
         <input
           type="checkbox"
           name="assignMe"
@@ -131,6 +131,7 @@ export default function EditCase() {
           checked={isCurrentUserAssignedOfficer}
           onChange={handleChange}
         />
+        </label>
         <input
           type="text"
           name="caseStatus"
