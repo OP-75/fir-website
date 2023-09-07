@@ -12,7 +12,7 @@ router.put("/case/:objId",async (req,res)=>{
         return;
     }
     
-    const loggedInOfficerData = OfficerModel.findById(req.session.user);
+    const loggedInOfficerData = await OfficerModel.findById(req.session.user);
     const loggedInOfficerRank = loggedInOfficerData.officerRank
 
     //remember the data we are sending from front end is only assignedOfficer (ie assigned Officer id) & case status
@@ -24,15 +24,15 @@ router.put("/case/:objId",async (req,res)=>{
     data = {...data, "assignedOfficerName": newOfficerName}
 
     const {objId} = req.params
-
-    console.log(data);
     
     const details = new CaseModel(data)
     console.log(details);
     try {
         
         const prevDoc = await CaseModel.findById(objId)
+        console.log(prevDoc);
 
+        console.log(`${prevDoc.assignedOfficer!==req.session.user}, ${prevDoc.assignedOfficer!=="None"}, ${prevDoc.assignedOfficer!==""}, ${loggedInOfficerRank}`);
         if (prevDoc.assignedOfficer!==req.session.user && prevDoc.assignedOfficer!=="None" && prevDoc.assignedOfficer!=="" && loggedInOfficerRank==="Constable") {
             res.status(401).json({sucess: false, error: "Only Commisner or the Assigned Constable can update the details"})
             return;

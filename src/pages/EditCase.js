@@ -94,18 +94,21 @@ export default function EditCase() {
     }
   }
 
-  async function handleSubmit() {
+  async function handleSubmit(e) {
+
+    e.preventDefault();
+
     try {
-      const res = axios.put(
+      const res = await axios.put(
         `http://localhost:5000/case/${caseId}`,
         caseDetails,
         { withCredentials: true }
       );
-
-      navigate("/cases-list")
     } catch (error) {
-      console.error(error);
+        const errorMsg = error.response.data.error;
+        window.alert(errorMsg);
     }
+    navigate("/cases-list")
   }
 
   return (
