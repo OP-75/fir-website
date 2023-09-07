@@ -76,8 +76,13 @@ const userDetailsSchema = new Schema({
     
 
 
-    //assigned officer will be chnged to their id later
+    //assigned officer stored the id of the offier that is assigned
     'assignedOfficer':{
+        type: String,
+        required: false,
+        default: "None",
+    },
+    'assignedOfficerName':{
         type: String,
         required: false,
         default: "None",

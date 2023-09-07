@@ -58,9 +58,23 @@ router.get("/case-of-officer/:officerId",async (req,res)=>{
 })
 
 
-router.get("/officer",async (req,res)=>{              
+router.get("/officer",async (req,res)=>{    
+    //make this so that only commissioner can request this method!!!!          
     const result = await OfficerModel.find()
     res.status(200).json({sucess: true, result: result})
+})
+
+router.get("/get-current-officer-id",async (req,res)=>{       
+    try {
+        if(req.session.user!==undefined){
+            res.status(200).json({sucess: true, result: req.session.user})
+        }
+        else{
+            res.status(401).json({sucess: false, "error": "Please login"})
+        }
+    } catch (error) {
+        res.status(400).json({sucess: false, "error": error})
+    }
 })
 
 

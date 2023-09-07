@@ -22,7 +22,7 @@ export default function CaseStatus() {
         const resData = await axios.get(`http://localhost:5000/case/${caseId}`, { withCredentials: true });
 
         setStatus({
-          assignedOfficer: resData.data.result.assignedOfficer,
+          assignedOfficerName: resData.data.result.assignedOfficerName,
           caseStatus: resData.data.result.caseStatus,
         });
       } catch (error) {
@@ -42,7 +42,7 @@ export default function CaseStatus() {
     <div id="case-container">
       <div id="contents">
         <h1 className="black-text">Case ID: {caseId}</h1>
-        <h3 className="black-text">Assigned Officer: {status.assignedOfficer}</h3>
+        <h3 className="black-text">Assigned Officer: {status.assignedOfficerName}</h3>
         <h3 className="black-text">Case Status: {status.caseStatus}</h3>
       </div>
     </div>

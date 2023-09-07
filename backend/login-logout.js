@@ -33,7 +33,7 @@ router.all("/login", async (req, res, next) => {
   const user = await authenticate(req, res, next);
   if (user) {
     // regenerate the session, which is good practice to help
-    // guard against forms of session fixation(this is a type of attact)
+    // guard against forms of session fixation(this is a type of attack)
     req.session.regenerate(function (err) {
       if (err) next(err);
 
