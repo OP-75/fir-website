@@ -37,6 +37,7 @@ export default function CasesList() {
               <td>{item.crimeDateTime}</td>
               <td>{item.createdAt.substring(0, 10)}</td>
               <td>{item.assignedOfficer}</td>
+              <td>{item.assignedOfficerName}</td>
               <td>{item.caseStatus}</td>
               <td className="edit-button">
                 <Link to={`/cases/edit/${item._id}`}>
@@ -143,7 +144,8 @@ export default function CasesList() {
           <th>Adderss of Incident</th>
           <th>Time of Incident</th>
           <th>Time of Report</th>
-          <th>Assigned Officer</th>
+          <th>Assigned Officer ID</th>
+          <th>Assigned Officer Name</th>
           <th>Case Status</th>
           <th>Edit</th>
           <th>View case</th>

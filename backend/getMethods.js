@@ -52,17 +52,42 @@ router.get("/case/:caseId", async (req,res)=>{
 
 
 
+
+
+
 //get case assigned to a officer
-router.get("/case-of-officer/:officerId",async (req,res)=>{   
-    res.status(404).send(`Page under construction`)
+router.get("/case-of-officer/:officerId",async (req,res)=>{  
+    
+    const {officerId} = req.params
+    
+    try {
+        const cases = await CaseModel.find({"assignedOfficer":officerId})
+        res.status(200).json({success: true, result: cases})
+    } catch (error) {
+        res.status(400).json({success: false, error: error})
+    }
 })
 
 
-router.get("/officer",async (req,res)=>{    
+router.get("/all-officers",async (req,res)=>{    
     //make this so that only commissioner can request this method!!!!          
     const result = await OfficerModel.find()
     res.status(200).json({sucess: true, result: result})
 })
+
+router.get("/officer/:officerId",async (req,res)=>{  
+    //make this so that only commissioner can request this method!!!!          
+    try {
+        const {officerId} = req.params
+        const result = await OfficerModel.findById(officerId)
+        res.status(200).json({sucess: true, result: result})
+        
+    } catch (error) {
+        console.error(error)
+        res.status(401).json({sucess: true, error: error})
+    }
+})
+
 
 router.get("/get-current-officer-id",async (req,res)=>{       
     try {

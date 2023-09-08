@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 
-import "./EditCase.css"
+import "./EditCase.css";
 
 export default function EditCase() {
   //to get route parameter (:caseId) use "useParams"
@@ -56,9 +56,6 @@ export default function EditCase() {
     fetchData();
   }, [caseId, navigate]);
 
-
-
-
   const [isCurrentUserAssignedOfficer, setIsCurrentUserAssignedOfficer] =
     useState(false);
 
@@ -95,7 +92,6 @@ export default function EditCase() {
   }
 
   async function handleSubmit(e) {
-
     e.preventDefault();
 
     try {
@@ -106,14 +102,13 @@ export default function EditCase() {
       );
       console.log(res);
     } catch (error) {
-        const errorMsg = error.response.data.error;
-        window.alert(errorMsg);
-        if(errorMsg==="Please login") navigate("/login")
-        return;
+      const errorMsg = error.response.data.error;
+      window.alert(errorMsg);
+      if (errorMsg === "Please login") navigate("/login");
+      return;
     }
-    
-    
-    navigate("/cases-list")
+
+    navigate("/cases-list");
   }
 
   return (
@@ -129,14 +124,15 @@ export default function EditCase() {
           disabled={isCurrentUserAssignedOfficer}
           required
         />
-        <label htmlFor="assignMe">Assign me as officer
-        <input
-          type="checkbox"
-          name="assignMe"
-          id="assignMe"
-          checked={isCurrentUserAssignedOfficer}
-          onChange={handleChange}
-        />
+        <label htmlFor="assignMe">
+          Assign me as officer
+          <input
+            type="checkbox"
+            name="assignMe"
+            id="assignMe"
+            checked={isCurrentUserAssignedOfficer}
+            onChange={handleChange}
+          />
         </label>
         <input
           type="text"
