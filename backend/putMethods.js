@@ -23,26 +23,33 @@ router.put("/case/:objId",async (req,res)=>{
 
     try {
         const newOfficerData = await OfficerModel.findById(data.assignedOfficer);
+        console.log(newOfficerData);
+
+        if(Object.keys(newOfficerData).length === 0){
+            res.status(401).json({sucess: false, error: "Officer ID is invalid please recheck it!"})
+            return;
+        }
         const newOfficerName = newOfficerData.officerName
+        
+        data = {...data, "assignedOfficerName": newOfficerName}
 
-        // console.log(newOfficerData);
-
+        const details = new CaseModel(data)
+        
     } catch (error) {
         res.status(401).json({sucess: false, error: "Officer ID is invalid please recheck it!"})
         return;
     }
-
-    data = {...data, "assignedOfficerName": newOfficerName}
-
-    const {objId} = req.params
     
-    const details = new CaseModel(data)
-    console.log(details);
+    
+    
+    
+    
     try {
         
+        const {objId} = req.params
         const prevDoc = await CaseModel.findById(objId)
         // console.log(prevDoc);
-
+        
         // console.log(`${prevDoc.assignedOfficer!==loggedInOfficerId}, ${prevDoc.assignedOfficer!=="None"}, ${prevDoc.assignedOfficer!==""}, ${loggedInOfficerRank}`);
         if (prevDoc.assignedOfficer!==loggedInOfficerId && prevDoc.assignedOfficer!=="None" && prevDoc.assignedOfficer!=="" && loggedInOfficerRank==="Constable") {
             res.status(401).json({sucess: false, error: "Only Commisner or the Assigned Constable can update the details"})

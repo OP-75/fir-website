@@ -107,7 +107,11 @@ export default function EditCase() {
     } catch (error) {
         const errorMsg = error.response.data.error;
         window.alert(errorMsg);
+        if(errorMsg=="Please login") navigate("/login")
+        return;
     }
+    
+    
     navigate("/cases-list")
   }
 
