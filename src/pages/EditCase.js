@@ -54,7 +54,7 @@ export default function EditCase() {
     }
 
     fetchData();
-  }, [caseId]);
+  }, [caseId, navigate]);
 
 
 
@@ -104,10 +104,11 @@ export default function EditCase() {
         caseDetails,
         { withCredentials: true }
       );
+      console.log(res);
     } catch (error) {
         const errorMsg = error.response.data.error;
         window.alert(errorMsg);
-        if(errorMsg=="Please login") navigate("/login")
+        if(errorMsg==="Please login") navigate("/login")
         return;
     }
     

@@ -68,7 +68,9 @@ router.put("/case/:objId", async (req, res) => {
       }
 
       const mongooseDoc = await CaseModel.findByIdAndUpdate(objId, data);
+      
       res.status(202).json({ sucess: true, data: mongooseDoc });
+
     } catch (error) {
       res.status(400).json({ sucess: false, error: error });
       console.log(
@@ -76,6 +78,9 @@ router.put("/case/:objId", async (req, res) => {
       );
     }
   } catch (error) {
+    console.log(
+        `Error wile saving or creatining the UserDetails object:: ${error}`
+      );
     res
       .status(401)
       .json({
