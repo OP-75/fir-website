@@ -67,7 +67,8 @@ export default function CasesList() {
           <th>officerRank</th>
           <th>officerEmail</th>
           <th>officerDesignatedArea</th>
-          <th>Edit</th>
+          <th>View details</th>
+          <th>Delete</th>
         </tr>
 
         {casesList}
