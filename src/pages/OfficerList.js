@@ -31,6 +31,7 @@ export default function CasesList() {
                 const casesJsx = result.map((item)=>{
                     return(
                         <tr>
+                            <td>{item._id}</td>
                             <td>{item.officerName}</td>
                             <td>{item.officerRank}</td>
                             <td>{item.officerEmail}</td>
@@ -62,6 +63,7 @@ export default function CasesList() {
             <table>
 
                 <tr>
+                    <th>officerId</th>
                     <th>officerName</th>
                     <th>officerRank</th>
                     <th>officerEmail</th>
