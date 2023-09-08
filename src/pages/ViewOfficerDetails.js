@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 
+import "./ViewOfficerDetails.css"
+
 
 export default function ViewOfficerDetails(){
 
@@ -44,16 +46,18 @@ export default function ViewOfficerDetails(){
 
     },[officerId])
 
-    return(
+    return (
         <div className="officer-details">
-                <p className="detail"> Officer ID: {officerDetails._id} </p>
-                <p className="detail"> Officer name:  {officerDetails.officerName}</p>
-                <p className="detail"> Officer Rank:  {officerDetails.officerRank}</p>
-                <p className="detail"> Officer Email:  {officerDetails.officerEmail}</p>
-                <p className="detail"> Officer Designated Area:  {officerDetails.officerDesignatedArea}</p>
-                <ul>
-                    {assignedCasesJSX}
-                </ul>
+            <p className="detail">Officer ID: <span>{officerDetails._id}</span></p>
+            <p className="detail">Officer Name: <span>{officerDetails.officerName}</span></p>
+            <p className="detail">Officer Rank: <span>{officerDetails.officerRank}</span></p>
+            <p className="detail">Officer Email: <span>{officerDetails.officerEmail}</span></p>
+            <p className="detail">Officer Designated Area: <span>{officerDetails.officerDesignatedArea}</span></p>
+            <p className="detail">Assigned Cases:</p>
+            <ul className="assigned-cases">
+                {assignedCasesJSX}
+            </ul>
         </div>
     );
+    
 }
