@@ -60,8 +60,3 @@ app.use("/", getMethods);
 app.use("/", loginLogoutMethods);
 
 
-
-
-app.get('/',(req,res)=>{
-  res.status(200).send(`welcome to home page ${req.session.user}`)
-})

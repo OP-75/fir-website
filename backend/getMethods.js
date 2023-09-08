@@ -11,19 +11,19 @@ router.get("/cases",async (req,res)=>{
     console.log(`User with session id: ${req.session?.id} has requested /cases`);
     try {
   
-        if(!req.session.user){
+        if(!req.session.officerId){
             return res.status(401).json({sucess: false, msg: "Please login"})
         }
         
-        const officerDoc = await OfficerModel.findById(req.session.user)
+        const officerDoc = await OfficerModel.findById(req.session.officerId)
         
         if(officerDoc.officerRank==="Commisioner"){
             const result = await CaseModel.find()
-            res.status(200).json({sucess: true, result, sessionId: req.session.id, user: req.session.user})
+            res.status(200).json({sucess: true, result, sessionId: req.session.id, user: req.session.officerId})
         }
         else if(officerDoc.officerRank==="Constable"){
             const result = await CaseModel.find({crimeArea: officerDoc.officerDesignatedArea})
-            res.status(200).json({sucess: true, result, sessionId: req.session.id, user: req.session.user})
+            res.status(200).json({sucess: true, result, sessionId: req.session.id, user: req.session.officerId})
         }
         else{
             res.status(401).json({sucess: false, msg: "request unsucessful, rank is unrecognized"})
@@ -66,8 +66,8 @@ router.get("/officer",async (req,res)=>{
 
 router.get("/get-current-officer-id",async (req,res)=>{       
     try {
-        if(req.session.user!==undefined){
-            res.status(200).json({sucess: true, result: req.session.user})
+        if(req.session.officerId!==undefined){
+            res.status(200).json({sucess: true, result: req.session.officerId})
         }
         else{
             res.status(401).json({sucess: false, "error": "Please login"})

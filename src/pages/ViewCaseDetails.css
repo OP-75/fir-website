@@ -1,0 +1,48 @@
+.case-details {
+    font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #d6d6d6;
+    max-width: 600px;
+    margin: 3rem auto;
+}
+
+.detail {
+    margin: 5px;
+    font-size: 16px;
+}
+
+#case-id {
+    font-size: 24px;
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.officer-info, .case-status {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.case-status {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.user-details, .victim-details, .crime-details {
+    border-top: 1px solid #ccc;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.user-details, .victim-details {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+}
+
+.user-details .detail, .victim-details .detail, .crime-details .detail {
+    color: #272727;
+    font-weight: bold;
+}
+
+

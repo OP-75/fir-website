@@ -18,7 +18,7 @@ async function authenticate(req, res, next) {
     // console.log(result);
     if (result) {
       // console.log(result._id);
-      return result._id;
+      return result;
     } else {
       return null;
     }
@@ -30,25 +30,27 @@ async function authenticate(req, res, next) {
 //should login be app.all?
 router.all("/login", async (req, res, next) => {
   console.log("Login process began at backend");
-  const user = await authenticate(req, res, next);
-  if (user) {
+  const result = await authenticate(req, res, next);
+  if (result) {
     // regenerate the session, which is good practice to help
     // guard against forms of session fixation(this is a type of attack)
     req.session.regenerate(function (err) {
       if (err) next(err);
 
       // store user information in session, typically a user id
-      req.session.user = user;
+      req.session.officerId = result._id; //this stored the id of officer
+      req.session.officerName = result.officerName; //this stored the Name of officer
+      req.session.officerRank = result.officerRank; //this stored the Name of officer
       
       // save the session before redirection to ensure page
       // load does not happen before session is saved
       req.session.save(function (err) {
         if (err) return next(err);
 
-        console.log(`User with session id: ${req.session.id} has logged in as ${req.session.user}`);
+        console.log(`User with session id: ${req.session.id} has logged in as ${req.session.officerName}`);
         return res
           .status(202)
-          .json({ loggedIn: true, currentUser: req.session.user, sessionId: req.session.id });
+          .json({ loggedIn: true, currentUser: req.session.officerId, sessionId: req.session.id });
       });
     });
   } else {
@@ -66,7 +68,7 @@ router.all("/logout", (req, res, next) => {
   // // clear the user from the session object and save.
   // // this will ensure that re-using the old session id
   // // does not have a logged in user
-  req.session.user = null;
+  req.session.officerId = null;
   req.session.save((err)=>{
     if (err) {
       next(err)

@@ -25,7 +25,7 @@ export default function Navbar(props){
             </header>
             <ul className="myNavBar">
 
-                <li className="navElement">Home</li>
+                <li className="navElement"><Link to={"/"} >Home</Link></li>
                 <li className="navElement">About Us</li>
                 <li className="navElement"><Link to={"/register"} >Regiser FIR</Link> </li>
                 <li className="navElement"><Link to={"/view-fir-status"} >View FIR status</Link></li>

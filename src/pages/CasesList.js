@@ -4,6 +4,7 @@ import "./CasesList.css";
 
 import { Link, useNavigate } from "react-router-dom";
 import { AiFillEdit } from "react-icons/ai";
+import {GrFormView} from "react-icons/gr"
 import { IconContext } from "react-icons";
 
 export default function CasesList() {
@@ -12,8 +13,8 @@ export default function CasesList() {
   axios.defaults.withCredentials = true
 
 
-  const navigate = useNavigate();
   const [deleted, setDeleted] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     async function fetchCases(params) {
       try {
@@ -46,6 +47,15 @@ export default function CasesList() {
                   </IconContext.Provider>
                 </Link>
               </td>
+              <td className="view-button">
+                <Link to={`/cases/view-details/${item._id}`}>
+                  <IconContext.Provider
+                    value={{ color: "black", size: "25px" }}
+                  >
+                    <GrFormView />
+                  </IconContext.Provider>
+                </Link>
+              </td>
               <td className="delete-button">
                 <button name={item._id} id={item._id} onClick={handleDelete}>Delete</button>
               </td>
@@ -64,7 +74,7 @@ export default function CasesList() {
     }
 
     fetchCases();
-  }, [deleted]); //fetch cases everytime we add a deleted case to list
+  }, [deleted, navigate]); //fetch cases everytime we add a deleted case to list, also i included "navigate" in dependency array caz react was throwing a warning, there is no other reason to include it in depencdency array
 
 
 
@@ -136,6 +146,7 @@ export default function CasesList() {
           <th>Assigned Officer</th>
           <th>Case Status</th>
           <th>Edit</th>
+          <th>View case</th>
           <th>Delete</th>
         </tr>
 

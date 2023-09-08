@@ -45,7 +45,7 @@ export default function EditCase() {
         setCurrentOfficerId(currOfficerId);
       } catch (error) {
         console.error(error);
-        const errorMsg = error.response.data.error;
+        const errorMsg = error?.response?.data?.error;
         if (errorMsg === "Please login") {
           window.alert(errorMsg);
           navigate("/login");
@@ -122,6 +122,7 @@ export default function EditCase() {
           value={caseDetails.assignedOfficer}
           onChange={handleChange}
           disabled={isCurrentUserAssignedOfficer}
+          required
         />
         <label htmlFor="assignMe">Assign me as officer
         <input
@@ -138,6 +139,7 @@ export default function EditCase() {
           placeholder="Case status"
           value={caseDetails.caseStatus}
           onChange={handleChange}
+          required
         />
         <button type="submit">Submit</button>
       </form>

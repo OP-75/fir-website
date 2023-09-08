@@ -76,7 +76,7 @@ const userDetailsSchema = new Schema({
     
 
 
-    //assigned officer stored the id of the offier that is assigned
+    //assignedOfficer stored the id of the offier that is assigned
     'assignedOfficer':{
         type: String,
         required: false,

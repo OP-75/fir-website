@@ -7,19 +7,30 @@ const router = express.Router()
 
 router.put("/case/:objId",async (req,res)=>{
 
-    if (req.session.user===undefined) {
+    if (req.session.officerId===undefined) {
         res.status(400).json({sucess: false, error: "Please login"})
         return;
     }
     
-    const loggedInOfficerData = await OfficerModel.findById(req.session.user);
-    const loggedInOfficerRank = loggedInOfficerData.officerRank
+    // const loggedInOfficerData = await OfficerModel.findById(req.session.user);
+    const loggedInOfficerRank = req.session.officerRank
+    const loggedInOfficerId = req.session.officerId
 
     //remember the data we are sending from front end is only assignedOfficer (ie assigned Officer id) & case status
     var data = req.body;
 
-    const newOfficerData = await OfficerModel.findById(data.assignedOfficer);
-    const newOfficerName = newOfficerData.officerName
+    // console.log(data)
+
+    try {
+        const newOfficerData = await OfficerModel.findById(data.assignedOfficer);
+        const newOfficerName = newOfficerData.officerName
+
+        // console.log(newOfficerData);
+
+    } catch (error) {
+        res.status(401).json({sucess: false, error: "Officer ID is invalid please recheck it!"})
+        return;
+    }
 
     data = {...data, "assignedOfficerName": newOfficerName}
 
@@ -30,10 +41,10 @@ router.put("/case/:objId",async (req,res)=>{
     try {
         
         const prevDoc = await CaseModel.findById(objId)
-        console.log(prevDoc);
+        // console.log(prevDoc);
 
-        console.log(`${prevDoc.assignedOfficer!==req.session.user}, ${prevDoc.assignedOfficer!=="None"}, ${prevDoc.assignedOfficer!==""}, ${loggedInOfficerRank}`);
-        if (prevDoc.assignedOfficer!==req.session.user && prevDoc.assignedOfficer!=="None" && prevDoc.assignedOfficer!=="" && loggedInOfficerRank==="Constable") {
+        // console.log(`${prevDoc.assignedOfficer!==loggedInOfficerId}, ${prevDoc.assignedOfficer!=="None"}, ${prevDoc.assignedOfficer!==""}, ${loggedInOfficerRank}`);
+        if (prevDoc.assignedOfficer!==loggedInOfficerId && prevDoc.assignedOfficer!=="None" && prevDoc.assignedOfficer!=="" && loggedInOfficerRank==="Constable") {
             res.status(401).json({sucess: false, error: "Only Commisner or the Assigned Constable can update the details"})
             return;
         }

@@ -15,6 +15,7 @@ import Login from "./pages/Login";
 import Homepage from "./pages/Home Page/Homepage";
 import ViewFirStatus from "./pages/ViewFirStatus";
 import EditCase from "./pages/EditCase";
+import ViewCaseDetails from "./pages/ViewCaseDetails";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Route exact path="/login" element={ <Login /> }  />
       <Route exact path="/view-fir-status" element={ <ViewFirStatus /> }  />
       <Route exact path="/cases/edit/:caseId" element={ <EditCase /> }  />
+      <Route exact path="/cases/view-details/:caseId" element={ <ViewCaseDetails /> }  />
     </Routes>
 
     //  <Registration/>
