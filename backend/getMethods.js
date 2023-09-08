@@ -52,10 +52,11 @@ router.get("/case/:caseId", async (req,res)=>{
 
 
 
+//below are all the get method for officer and realated ops
 
 
 
-//get case assigned to a officer
+//get all cases assigned to a officer
 router.get("/case-of-officer/:officerId",async (req,res)=>{  
     
     const {officerId} = req.params
