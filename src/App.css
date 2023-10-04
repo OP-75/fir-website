@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+  }
+  .nav-bar{
+    background-color: #2fc7ff;
+    min-height: 4rem;
+    display: flex;
+    gap: 6rem;
+    font-size: larger;
+    align-items: center;
+    /* justify-content: center; */
+  }
+  .nav-bar header{
+    display: flex;
+    margin-left: 12%;
+  }
+  #navbar{
+    list-style: none;
+    display: flex;
+    gap: 4em;
+    justify-content: center;
+  }
+  
+  /* Next Code */
+  .allCases{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin: 25px;
+  }
+  .AllCasesInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  /* css for button. id = logout*/
+  #logout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 175px;
+    height: 40px;
+    background-color: #2fc7ff;
+  }
+  /*
+  i have two choices of colors :
+    background-color: rgba(150,212,212,0.4);    - more greenish
+    background-color: rgba(140, 184, 249, 0.4);   - more bluish
+  
+  
+  you choose which one to select
+  */
+  
+  table.center {
+    margin-left: auto; 
+    margin-right: auto;
+  }
+  tr:nth-child(even){
+    background-color: rgba(140, 184, 249, 0.4);
+  }
+  th:nth-child(even),td:nth-child(even){
+    background-color: rgba(140, 184, 249, 0.4);
+  }
+  th{
+    background-color: rgba(140, 184, 249, 0.4);
+    min-width: 80px;
+  }
+  td, th{
+    border: 1px solid gray;
+    border-collapse: collapse;
+    /* border-radius: 10px; */
+    padding: 12px;
+    text-align: center;
+  }
+  #searchbar{
+    display: block;
+    width: 350px;
+    height: 40px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: auto; 
+    margin-right: auto;
+    padding: 0px 15px;
+  }
+  input#searchbar::placeholder{
+    text-align: center;
+  }
+  
+  /*  display: table;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: gray;
+    */

@@ -18,9 +18,11 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.4",
     "react-icons": "^4.10.1",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.14.2",
     "react-scripts": "5.0.1",
     "react-slideshow-image": "^4.2.1",
+    "react-table": "^7.8.0",
     "session-file-store": "^1.5.0",
     "sweetalert2-react": "^0.8.3",
     "web-vitals": "^2.1.4"
