@@ -1,6 +1,8 @@
 const express = require('express')
 const {CaseModel,OfficerModel} = require('./mongoose-schema')
 
+const {checkSignIn} = require("./authenticate"); 
+
 const router = express.Router()
 
 
@@ -23,7 +25,7 @@ router.post("/case",async (req,res)=>{
 })
 
 
-router.post("/officer", async (req,res)=>{
+router.post("/officer", checkSignIn, async (req,res)=>{
     const data = req.body
     console.log(data);
 
