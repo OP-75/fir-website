@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
 import LoginNavbar from './LoginNavbar';
-import CasesList from "./OfficerList";
+import CasesList from "./CasesList";
 import RegisterNewOfficer from "./RegisterNewOfficer";
 import OfficerList from "./OfficerList"
 
 
 export default function OfficerDashboard(){
 
-    const [comToLoad, setComToLoad] = useState("casesList");
+    const [comToLoad, setComToLoad] = useState("cases-list");
 
     return(
         <>

@@ -3,19 +3,16 @@ import axios from "axios";
 import "./CasesList.css";
 import CaseTableS from "./CaseTableS";
 
-
 import { Link, useNavigate } from "react-router-dom";
 import { AiFillEdit } from "react-icons/ai";
 import { IconContext } from "react-icons";
 
-
 export default function CasesList() {
-  
-
   axios.defaults.withCredentials = true;
 
   const [deleted, setDeleted] = useState([]);
-  const [fetched_data, setFetched_data] = useState(null);
+  const [fetched_data, setFetched_data] = useState([]);
+
   const navigate = useNavigate();
   useEffect(() => {
     async function fetchCases(params) {
@@ -23,7 +20,9 @@ export default function CasesList() {
         const response = await axios.get("http://localhost:5000/cases", {
           withCredentials: true,
         });
-        // console.log(response);
+        
+        console.log(response);
+
         if (!response) {
           return;
         }
@@ -55,13 +54,10 @@ export default function CasesList() {
         });
 
         setFetched_data(data);
-
       } catch (error) {
         console.log(error);
-        if (error.response.data.msg === "Please login") {
-          window.alert("Please login");
-          navigate("/login");
-        }
+        window.alert("Please login");
+        navigate("/login");
       }
     }
 
@@ -88,11 +84,11 @@ export default function CasesList() {
     }
   }
 
-
-
   return (
     <div id="cases-container">
-       {fetched_data && <CaseTableS fetched_data={fetched_data} handleDelete={handleDelete} />}
+      {fetched_data && 
+        <CaseTableS fetched_data={fetched_data} handleDelete={handleDelete} />
+      }
     </div>
   );
 }

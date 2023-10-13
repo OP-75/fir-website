@@ -2,15 +2,14 @@ const express = require("express");
 const { CaseModel, OfficerModel } = require("./mongoose-schema");
 const router = express.Router();
 
-router.put("/case/:objId", async (req, res) => {
-  if (req.session.officerId === undefined) {
-    res.status(400).json({ sucess: false, error: "Please login" });
-    return;
-  }
+// import checkSignIn from "./authenticate"; 
+const {checkSignIn} = require("./authenticate"); 
 
+router.put("/case/:objId", checkSignIn, async (req, res) => {
+  
   // const loggedInOfficerData = await OfficerModel.findById(req.session.user);
-  const loggedInOfficerRank = req.session.officerRank;
-  const loggedInOfficerId = req.session.officerId;
+  const loggedInOfficerRank = req.user.officerRank;
+  const loggedInOfficerId = req.user.officerId;
 
   //remember the data we are sending from front end is only assignedOfficer (ie assigned Officer id) & case status
   var data = req.body;

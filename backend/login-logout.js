@@ -27,7 +27,7 @@ async function authenticate(req, res, next) {
     }
   } catch (error) {
     console.log(error);
-    next(error);
+    return null;
   }
 }
 
@@ -67,14 +67,15 @@ router.all("/login", async (req, res, next) => {
         console.log(
           `User with session id: ${req.session.id} has logged in as ${req.session.officerName}`
         );
-        return res
-          .status(202)
-          .json({
-            loggedIn: true,
-            currentUser: req.session.officerId,
-            auth: jwtToken,
-            sessionId: req.session.id,
-          });
+        res.cookie("jwtToken",jwtToken,{
+            httpOnly: true,
+            // secure: true, //for HTTPS
+            // signed: true
+          })
+
+        res.status(202).json({
+          loggedIn: true
+        })
       });
     });
   } else {
@@ -109,7 +110,14 @@ router.all("/logout", (req, res, next) => {
         console.warn(err);
       }
 
+      res.cookie("jwtToken",null,{
+        httpOnly: true,
+        // secure: true, //for HTTPS
+        // signed: true
+      })
+
       console.log("Logout process completed at backend  at backend");
+
       return res
         .status(200)
         .json({

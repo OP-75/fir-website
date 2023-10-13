@@ -2,10 +2,10 @@ const express = require('express')
 const {CaseModel,OfficerModel} = require('./mongoose-schema')
 const router = express.Router()
 
+const {checkSignIn} = require("./authenticate"); 
 
 
-
-router.delete("/case/:objId",async (req,res)=>{
+router.delete("/case/:objId", checkSignIn,async (req,res)=>{
 
     const {objId} = req.params
 
@@ -23,7 +23,7 @@ router.delete("/case/:objId",async (req,res)=>{
 })
 
 
-router.delete("/officer/:objId",async (req,res)=>{
+router.delete("/officer/:objId", checkSignIn,async (req,res)=>{
 
     const {objId} = req.params
 
