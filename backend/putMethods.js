@@ -2,7 +2,7 @@ const express = require("express");
 const { CaseModel, OfficerModel } = require("./mongoose-schema");
 const router = express.Router();
 
-// import checkSignIn from "./authenticate"; 
+
 const {checkSignIn} = require("./authenticate"); 
 
 router.put("/case/:objId", checkSignIn, async (req, res) => {

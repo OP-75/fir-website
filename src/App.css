@@ -89,9 +89,10 @@
     text-align: center;
   }
   
-  /*  display: table;
-    box-sizing: border-box;
-    text-indent: initial;
-    border-spacing: 2px;
-    border-color: gray;
-    */
+  .on-hover-pointer:hover{
+    cursor: pointer;
+  }
+  .on-hover-pointer{
+    padding: 10px;
+  }
+

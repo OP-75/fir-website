@@ -21,5 +21,25 @@ function checkSignIn(req, res, next) {
     }
   }
 
-  module.exports = {checkSignIn}
+
+function allowOnlyComissioner(req, res, next) {
+    try {
+    //   console.log(`User with JWT: ${req.cookies.jwtToken} has requested /cases`);
+        const officer = req.user;
+      if (!officer || officer.officerRank!=='Commisioner') {
+        return res
+          .status(401)
+          .json({ success: false, msg: "Unauthorized access, only 'Commisioner' allowed" });
+      }
+
+      next();
+    } catch (error) {
+      res.clearCookie("jwtToken");
+      return res.status(401).json({ success: false, error: error });
+    }
+  }
+
+
+
+  module.exports = {checkSignIn, allowOnlyComissioner}
   

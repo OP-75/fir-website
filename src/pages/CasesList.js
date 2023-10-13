@@ -4,7 +4,7 @@ import "./CasesList.css";
 import CaseTableS from "./CaseTableS";
 
 import { Link, useNavigate } from "react-router-dom";
-import { AiFillEdit } from "react-icons/ai";
+import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { IconContext } from "react-icons";
 
 export default function CasesList() {
@@ -37,7 +37,7 @@ export default function CasesList() {
                   <IconContext.Provider
                     value={{ color: "black", size: "15px" }}
                   >
-                    <AiFillEdit />
+                    <AiFillEdit className="on-hover-pointer" />
                   </IconContext.Provider>
                 </Link>
               </div>
@@ -45,9 +45,11 @@ export default function CasesList() {
 
             deleteButton: (
               <div className="delete-button">
-                <button name={item._id} id={item._id} onClick={handleDelete}>
-                  Delete
-                </button>
+                <IconContext.Provider
+                    value={{ color: "black", size: "20px" }}
+                  >
+                  <AiFillDelete className="on-hover-pointer" name={item._id} id={item._id} onClick={handleDelete}/>
+                  </IconContext.Provider>
               </div>
             ),
           };
@@ -56,7 +58,7 @@ export default function CasesList() {
         setFetched_data(data);
       } catch (error) {
         console.log(error);
-        window.alert("Please login");
+        window.alert(error?.response?.data?.msg);
         navigate("/login");
       }
     }
@@ -80,7 +82,9 @@ export default function CasesList() {
         console.log(`Deletion of ${id} failed`);
       }
     } catch (error) {
-      console.log(`Deletion of ${id} failed,,, error: ${error}`);
+      console.log(`Deletion of ${id} failed error:`);
+      console.log(error);
+      window.alert(error.response?.data?.msg)
     }
   }
 

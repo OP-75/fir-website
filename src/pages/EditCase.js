@@ -46,10 +46,9 @@ export default function EditCase() {
       } catch (error) {
         console.error(error);
         const errorMsg = error?.response?.data?.error;
-        if (errorMsg === "Please login") {
-          window.alert(errorMsg);
-          navigate("/login");
-        }
+
+        window.alert(errorMsg);
+        navigate("/login");
       }
     }
 
@@ -108,7 +107,7 @@ export default function EditCase() {
       return;
     }
 
-    navigate("/cases-list");
+    navigate(-1); //passing -1 means go back
   }
 
   return (

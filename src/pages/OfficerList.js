@@ -5,7 +5,7 @@ import "./CasesList.css";
 import "./buttons/OfficerDeleteButton";
 import OfficerDeleteButton from "./buttons/OfficerDeleteButton";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { GrFormView } from "react-icons/gr";
 import { IconContext } from "react-icons";
@@ -14,6 +14,8 @@ import { IconContext } from "react-icons";
 
 export default function CasesList() {
   const [casesList, setCasesList] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchCases(params) {
@@ -51,7 +53,8 @@ export default function CasesList() {
         setCasesList(casesJsx);
       } catch (error) {
         console.log(error);
-        setCasesList(error);
+        window.alert(error.response.data.msg);
+        navigate("/login");
       }
     }
 

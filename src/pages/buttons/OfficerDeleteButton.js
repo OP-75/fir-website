@@ -1,6 +1,9 @@
 import React from "react";
 import axios from "axios";
 
+import { AiFillDelete } from "react-icons/ai";
+import { IconContext } from "react-icons";
+
 export default function OfficerDeleteButton(props) {
   async function handleClick() {
     try {
@@ -12,5 +15,11 @@ export default function OfficerDeleteButton(props) {
     }
   }
 
-  return <button onClick={handleClick}>Delete</button>;
+  return (
+  <IconContext.Provider
+    value={{ color: "black", size: "20px" }}
+  >
+  <AiFillDelete className="on-hover-pointer" onClick={handleClick}/>
+  </IconContext.Provider>
+  )
 }

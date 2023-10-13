@@ -1,7 +1,7 @@
 const express = require("express");
 const { CaseModel, OfficerModel } = require("./mongoose-schema");
 
-const {checkSignIn} = require("./authenticate"); 
+const {checkSignIn, allowOnlyComissioner} = require("./authenticate"); 
 
 
 const router = express.Router();
@@ -77,14 +77,14 @@ router.get("/case-of-officer/:officerId", checkSignIn, async (req, res) => {
   }
 });
 
-router.get("/all-officers", checkSignIn, async (req, res) => {
-  //make this so that only commissioner can request this method!!!!
+router.get("/all-officers", [checkSignIn, allowOnlyComissioner] , async (req, res) => {
+  
   const result = await OfficerModel.find();
   res.status(200).json({ sucess: true, result: result });
 });
 
-router.get("/officer/:officerId", checkSignIn, async (req, res) => {
-  //make this so that only commissioner can request this method!!!!
+router.get("/officer/:officerId", [checkSignIn, allowOnlyComissioner], async (req, res) => {
+  
   try {
     const { officerId } = req.params;
     const result = await OfficerModel.findById(officerId);
