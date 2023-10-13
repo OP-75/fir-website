@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useTable, useGlobalFilter } from 'react-table';
-import CaseModal from "./caseModal";
 import NotificationModal from './NotificationModal';
 import "./notification.css"
 

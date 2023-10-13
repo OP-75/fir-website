@@ -7,13 +7,25 @@ const router = express.Router()
 
 //get all data according to officers rank, ie if constable -> return cases in their are, if commissioner -> return all cases
 
-router.get("/cases",async (req,res)=>{
-    console.log(`User with session id: ${req.session?.id} has requested /cases`);
+function checkSignIn(req, res){
+    console.warn(`User with session id: ${req.session?.id}, ${req.session?.officerName} has requested /cases`);
+    if(req.session.officerId && req.session.officerName && req.session.officerRank){
+       next();     //If session exists, proceed to page
+    } else {
+       var err = new Error("Not logged in!");
+       console.log(req.session.user);
+       next(err);  //Error, trying to access unauthorized page!
+    }
+ }
+
+router.get("/cases", checkSignIn ,async (req,res)=>{
+
+
     try {
   
-        if(!req.session.officerId){
-            return res.status(401).json({sucess: false, msg: "Please login"})
-        }
+        // if(!req.session.officerId ){
+        //     return res.status(401).json({sucess: false, msg: "Please login"})
+        // }
         
         const officerDoc = await OfficerModel.findById(req.session.officerId)
         

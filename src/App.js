@@ -17,6 +17,7 @@ import ViewFirStatus from "./pages/ViewFirStatus";
 import EditCase from "./pages/EditCase";
 import ViewCaseDetails from "./pages/ViewCaseDetails";
 import ViewOfficerDetails from "./pages/ViewOfficerDetails";
+import OfficerDashboard from "./pages/OfficerDashboard";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Route exact path="/register-officer" element={ <RegisterNewOfficer /> }  />
       <Route exact path="/all-officer" element={ <OfficerList /> }  />
       <Route exact path="/login" element={ <Login /> }  />
+      <Route exact path="/officer-dashboard" element={ <OfficerDashboard /> }  />
       <Route exact path="/view-fir-status" element={ <ViewFirStatus /> }  />
       <Route exact path="/cases/edit/:caseId" element={ <EditCase /> }  />
       <Route exact path="/cases/view-details/:caseId" element={ <ViewCaseDetails /> }  />

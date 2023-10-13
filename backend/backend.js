@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require('cookie-parser')
 
 const mongoose = require("mongoose");
 const { CaseModel, OfficerModel } = require("./mongoose-schema");
@@ -10,6 +11,7 @@ const deleteMethods = require("./deleteMethods");
 const getMethods = require("./getMethods");
 const loginLogoutMethods = require("./login-logout");
 
+
 const session = require("express-session");
 
 const app = express();
@@ -19,7 +21,11 @@ app.use(cors({
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200
 }));
+
 app.use(express.json());
+
+app.use(cookieParser());
+
 
 app.use(
   session({

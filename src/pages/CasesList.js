@@ -3,13 +3,14 @@ import axios from "axios";
 import "./CasesList.css";
 import CaseTableS from "./CaseTableS";
 
+
 import { Link, useNavigate } from "react-router-dom";
 import { AiFillEdit } from "react-icons/ai";
-import { GrFormView } from "react-icons/gr";
 import { IconContext } from "react-icons";
 
+
 export default function CasesList() {
-  const [casesList, setCasesList] = useState([]);
+  
 
   axios.defaults.withCredentials = true;
 
@@ -87,28 +88,7 @@ export default function CasesList() {
     }
   }
 
-  function logout() {
-    //OK THE LOGOUT ERROR WAS BECASUE WE WERENT PASSING data=null below so it was just: ("http://localhost:5000/logout",{ withCredentials: true })
-    // SO axios was passing data={ withCredentials: true } and the actual configuration of was set to default ie withCredential was = false
-    //so every time we clicked logout the the server made a fresh session and logged out the user with that fresh session, keeping the already logged in session/user
-    // as it is,
-    // Summary: PASS DATA AS `null` EVERY TIME U DO A "POST,PUT" REQUEST!!!!!!!!!!!!!!!!!!!!!!!!!! OTHERWISE THE CONFIGURATION OBJECT WILL BE PASSED AS DATA AND CONFIG WILL  = DEFAULT
-    //other ways to counter this is just to use DELETE OR GET REQUEST OR USE:
-    // axios.defaults.withCredentials = true at the start(top) of the component
 
-    axios.defaults.withCredentials = true;
-
-    axios
-      .post("http://localhost:5000/logout", null, { withCredentials: true })
-      .then((response) => {
-        console.log(response);
-        navigate("/login");
-      })
-      .catch((err) => {
-        console.log(err);
-        window.alert("Logout failed");
-      });
-  }
 
   return (
     <div id="cases-container">
