@@ -20,16 +20,16 @@ export default function Navbar(props){
         <div className="box-1">
             <header className="topHeader">
                 {/* <h1 className="welcomeMessage">Welcome to {props.title}!</h1> */}
-                <h3>Welcome to FIR Management System</h3>
+                <h3><Link to={"/"} >Welcome to FIR Management System</Link></h3>
                 <img src="" alt="" />
             </header>
             <ul className="myNavBar">
 
                 <li className="navElement"><Link to={"/"} >Home</Link></li>
-                <li className="navElement">About Us</li>
+                <li className="navElement"><Link to={"/"} >Regiser FIR</Link></li>
                 <li className="navElement"><Link to={"/register"} >Regiser FIR</Link> </li>
                 <li className="navElement"><Link to={"/view-fir-status"} >View FIR status</Link></li>
-                <li className="navElement">Withdraw FIR</li>
+                <li className="navElement"><Link to={"/"} >Withdraw FIR</Link></li>
                 <li className="navElement" id="login"><Link to={"/login"} >Login</Link></li>
             </ul>
         </div>

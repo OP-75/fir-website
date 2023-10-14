@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import COMnavbar from './Home Page/components/COMnavbar'
 
 
 import "./Login.css"
@@ -54,8 +55,9 @@ export default function Login(){
   const [data,setData] = useState({})
   
   return (
-        <div>
-          <form>
+        <div className="login-form-container">
+          <COMnavbar/>
+          <form className="form-group" >
             <input
               type="email"
               placeholder="Your Email"
