@@ -1,5 +1,5 @@
 import React from "react";
-import "./Home Page/components/Navbar.css";
+import "./LoginNavbar.css";
 import {useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -49,8 +49,8 @@ export default function LoginNavbar(props) {
             <button onClick={()=>{setComToLoad("register-officer")}}>Register Officers</button>
           </li>
 
-          <li className="navElement" id="login">
-            <button onClick={logout}>Logout</button>
+          <li className="navElement" >
+            <button id="logout-btn" onClick={logout}>Logout</button>
           </li>
         </ul>
       </div>

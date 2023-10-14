@@ -6,6 +6,8 @@ import { useState } from "react";
 
 import Swa1 from "sweetalert2";
 
+import "./RegisterNewOfficer.css"
+
 /* 
     'officerName'
     'officerRank'
@@ -75,7 +77,7 @@ export default function RegisterNewOfficer(params) {
   ]
 
   return (
-    <div>
+    <div className="register-new-officer">
       <form>
         <input
           type="text"
@@ -103,5 +105,4 @@ export default function RegisterNewOfficer(params) {
         </button>
       </form>
     </div>
-  );
-}
+  );}

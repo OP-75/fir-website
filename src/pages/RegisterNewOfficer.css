@@ -1,0 +1,50 @@
+/* Example styling, adjust as per your design requirements */
+
+
+.register-new-officer {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ebe7e7;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    margin-top: 3vh;
+
+  }
+
+  .register-new-officer form{
+    border: none;
+    width: 50%;
+    background-color: #ebe7e7;
+
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ebe7e7;
+    border-radius: 8px;
+  }
+  
+  .register-new-officer input,
+  .register-new-officer select {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .register-new-officer button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .register-new-officer button:hover {
+    background-color: #0056b3;
+  }
+  

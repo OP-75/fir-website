@@ -10,6 +10,8 @@ import servicingLocations from "./data/officerAreas";
 
 import { useState } from "react";
 
+import COMnavbar from './Home Page/components/COMnavbar'
+
 export default function Registration() {
   //imp u have to put useNavigate outside the handleSubmit(or any) function!!!
   const naviagte = useNavigate();
@@ -88,6 +90,7 @@ export default function Registration() {
 
   return (
     <div className="firForm">
+      <COMnavbar/>
       <form
         onSubmit={(e) => {
           handleSubmit(e);

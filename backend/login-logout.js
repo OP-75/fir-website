@@ -74,7 +74,11 @@ router.all("/login", async (req, res, next) => {
           })
 
         res.status(202).json({
-          loggedIn: true
+          loggedIn: true,
+          id: result._id,
+          officerName: result.officerName,
+          officerRank: result.officerRank,
+          officerDesignatedArea: result.officerDesignatedArea,
         })
       });
     });

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import COMnavbar from './Home Page/components/COMnavbar'
 
 export default function ViewFirStatus() {
     
@@ -16,6 +17,7 @@ export default function ViewFirStatus() {
 
     return(
         <div className="view-fir-status">
+            <COMnavbar/>
             <form onSubmit={redirectOnSubmit}>
                 <input type="text" name="id" onChange={
                     (e)=>{

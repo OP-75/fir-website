@@ -1,0 +1,58 @@
+/* Try this color: - background-color: #c7ddff; */
+
+.box-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    z-index: 1;
+    /* background-color: #97bcea; */
+    background-color: #23c3fd;
+    width: 100%;
+}
+.topHeader{ 
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 3vh;
+}
+.myNavBar{
+    display: flex;
+    align-items:end;
+    margin-right: 4%;
+    gap: 3em;
+}
+
+
+.navElement{
+    list-style: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.navElement button{
+    text-decoration: none;
+    color: black;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    height: fit-content;
+}
+
+.navElement:hover{
+    cursor: pointer;
+    background-color: transparent;
+    color:whitesmoke;
+
+}
+.navElement button:hover{
+    cursor: pointer;
+    background-color: #221044;
+    color:whitesmoke;
+}
+#logout-btn{
+    background-color: #221044;
+    color:whitesmoke;
+}

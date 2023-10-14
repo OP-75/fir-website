@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./CasesList.css";
+import './OfficerList.css'
 
 import "./buttons/OfficerDeleteButton";
 import OfficerDeleteButton from "./buttons/OfficerDeleteButton";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { GrFormView } from "react-icons/gr";
 import { IconContext } from "react-icons";
@@ -14,8 +15,6 @@ import { IconContext } from "react-icons";
 
 export default function CasesList() {
   const [casesList, setCasesList] = useState(null);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchCases(params) {
@@ -54,7 +53,6 @@ export default function CasesList() {
       } catch (error) {
         console.log(error);
         window.alert(error.response.data.msg);
-        navigate("/login");
       }
     }
 
