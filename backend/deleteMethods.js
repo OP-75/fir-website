@@ -29,6 +29,9 @@ router.delete("/officer/:objId", [checkSignIn, allowOnlyComissioner],async (req,
 
     try {
         //see the docs for more details, param is the filter
+        const updatation = await CaseModel.updateMany({assignedOfficer: objId}, {assignedOfficer: "None", assignedOfficerName: "None", caseStatus: "Officer yet to be assigned"});
+        console.log(`For Deletting officer ${JSON.stringify(updatation)} was returned`);
+
         const mongooseDoc = await OfficerModel.deleteOne({_id: objId})
         res.status(202).json({sucess: true, result: mongooseDoc})
     } catch (error) {

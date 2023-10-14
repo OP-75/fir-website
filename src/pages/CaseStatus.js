@@ -42,7 +42,7 @@ export default function CaseStatus() {
   return (
 
     <>    
-    <COMnavbar/>
+    <COMnavbar/>`
     <div id="case-container">
       <div id="contents">
         <h1 className="black-text">Case ID: {caseId}</h1>
