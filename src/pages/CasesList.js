@@ -58,7 +58,7 @@ export default function CasesList() {
         setFetched_data(data);
       } catch (error) {
         console.log(error);
-        window.alert(error?.response?.data?.msg);
+        window.alert(JSON.stringify(error?.response?.data));
         navigate("/login");
       }
     }
@@ -84,7 +84,7 @@ export default function CasesList() {
     } catch (error) {
       console.log(`Deletion of ${id} failed error:`);
       console.log(error);
-      window.alert(error.response?.data?.msg)
+      window.alert(JSON.stringify(error?.response?.data))
     }
   }
 
