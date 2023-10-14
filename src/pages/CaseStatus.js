@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./CaseStatus.css";
+import COMnavbar from './Home Page/components/COMnavbar'
 
 export default function CaseStatus() {
   // gets the route parameter (caseId) -- route param is /case-status/:caseId , here "caseId" is route param
@@ -39,6 +40,9 @@ export default function CaseStatus() {
   }
 
   return (
+
+    <>    
+    <COMnavbar/>
     <div id="case-container">
       <div id="contents">
         <h1 className="black-text">Case ID: {caseId}</h1>
@@ -46,5 +50,7 @@ export default function CaseStatus() {
         <h3 className="black-text">Case Status: {status.caseStatus}</h3>
       </div>
     </div>
+    </>
+
   );
 }

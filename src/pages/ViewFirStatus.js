@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import COMnavbar from './Home Page/components/COMnavbar'
 
+import './ViewFirStatus.css'
+
 export default function ViewFirStatus() {
     
     const [id,setId] = useState("");

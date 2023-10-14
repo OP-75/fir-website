@@ -1,18 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Oswald:wght@300&family=Poppins&family=Raleway:wght@300&display=swap');
 
-body{
-    /* background: url('https://i0.wp.com/www.goodwin.edu/enews/wp-content/uploads/2019/09/What-Does-it-Take-Police-Officer-Qualities-and-Qualifications.jpg?fit=1920%2C904&ssl=1'); */
-    background: url('./Home\ Page/SP.jpg');
-    background-repeat:inherit;
-    min-width: 100%;
-    font-weight: bold;
-    height: max-content;
-}
-.firForm{
-    /* font-family: 'Raleway', sans-serif; */
 
-}
-form{
+
+.firForm form{
     background-color: #fff;
     opacity: 90%;
     display: flex;
@@ -20,7 +10,8 @@ form{
     justify-content: center;
     column-gap: 40px;
     margin: 45px 180px;
-    border: 2px solid;
+    border: 1px solid;
+    border-radius: 10px;
     padding: 0;
 }
 
@@ -40,11 +31,17 @@ input, textarea, select{
     /* font-family: 'Raleway'; */
     font-weight: 550;
     background-color: #f7f7f7;
+
+    border-radius: 2px;
+
+    border: 2px solid gray;
 }
 textarea{
     resize: none;
     height: 100px;
     box-sizing: border-box;
+
+    border: 2px solid gray;
 }
 
 textarea::placeholder, input::placeholder{

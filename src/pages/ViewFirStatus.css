@@ -1,0 +1,34 @@
+.view-fir-status{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.view-fir-status form{
+
+    max-width: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 6rem;
+
+    border-radius: 6px;
+
+    padding: 2rem 4rem;
+
+    -webkit-box-shadow: 1px -1px 14px 0px rgba(0,0,0,0.51);
+-moz-box-shadow: 1px -1px 14px 0px rgba(0,0,0,0.51);
+box-shadow: 1px -1px 14px 0px rgba(0,0,0,0.51);
+
+background-color: rgba(180, 180, 248, 0.354);
+}
+.view-fir-status form input{
+    width: 26rem;
+}
+.view-fir-status form button{
+    width: 10rem;
+}
+
