@@ -29,6 +29,8 @@ router.post("/officer", [checkSignIn, allowOnlyComissioner], async (req,res)=>{
     const data = req.body
     console.log(data);
 
+    // actually we should not be able to register 2 officers with SAME email!!! But i havent implemented that validation/feature yet!!!!
+
     const officerDocument = OfficerModel(data)
 
     try {
