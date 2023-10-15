@@ -26,8 +26,7 @@ export default function Navbar(props){
             <ul className="myNavBar">
 
                 <li className="navElement"><Link to={"/"} >Home</Link></li>
-                <li className="navElement"><Link to={"/"} >Regiser FIR</Link></li>
-                <li className="navElement"><Link to={"/register"} >Regiser FIR</Link> </li>
+                <li className="navElement"><Link to={"/register"} >Register FIR</Link> </li>
                 <li className="navElement"><Link to={"/view-fir-status"} >View FIR status</Link></li>
                 <li className="navElement"><Link to={"/"} >Withdraw FIR</Link></li>
                 <li className="navElement" id="login"><Link to={"/login"} >Login</Link></li>
