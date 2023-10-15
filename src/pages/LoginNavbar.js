@@ -40,6 +40,9 @@ export default function LoginNavbar(props) {
 
         <ul className="myNavBar">
           <li className="navElement">
+            <button onClick={()=>{setComToLoad("chart")}}>View Crime Statistics</button>
+          </li>
+          <li className="navElement">
             <button onClick={()=>{setComToLoad("cases-list")}}>Manage all cases</button>
           </li>
           <li className="navElement">

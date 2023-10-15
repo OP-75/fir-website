@@ -18,6 +18,7 @@ import EditCase from "./pages/EditCase";
 import ViewCaseDetails from "./pages/ViewCaseDetails";
 import ViewOfficerDetails from "./pages/ViewOfficerDetails";
 import OfficerDashboard from "./pages/OfficerDashboard";
+import CrimeBarchart from "./pages/CrimeBarchart";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
       <Route exact path="/cases/edit/:caseId" element={ <EditCase /> }  />
       <Route exact path="/cases/view-details/:caseId" element={ <ViewCaseDetails /> }  />
       <Route exact path="/cases/view-officer-details/:officerId" element={ <ViewOfficerDetails /> }  />
+      <Route exact path="/chart" element={ <CrimeBarchart/> }  />
     </Routes>
 
     //  <Registration/>

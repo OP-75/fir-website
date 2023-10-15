@@ -1,13 +1,11 @@
 const express = require("express");
 const { CaseModel, OfficerModel } = require("./mongoose-schema");
 
-const {checkSignIn, allowOnlyComissioner} = require("./authenticate"); 
-
+const { checkSignIn, allowOnlyComissioner } = require("./authenticate");
 
 const router = express.Router();
 
 //get all data according to officers rank, ie if constable -> return cases in their are, if commissioner -> return all cases
-
 
 router.get("/cases", checkSignIn, async (req, res, next) => {
   try {
@@ -17,33 +15,27 @@ router.get("/cases", checkSignIn, async (req, res, next) => {
 
     if (officerDoc.officerRank === "Commisioner") {
       const result = await CaseModel.find();
-      res
-        .status(200)
-        .json({
-          sucess: true,
-          result,
-          sessionId: req.session.id,
-          user: req.user,
-        });
+      res.status(200).json({
+        sucess: true,
+        result,
+        sessionId: req.session.id,
+        user: req.user,
+      });
     } else if (officerDoc.officerRank === "Constable") {
       const result = await CaseModel.find({
         crimeArea: officerDoc.officerDesignatedArea,
       });
-      res
-        .status(200)
-        .json({
-          sucess: true,
-          result,
-          sessionId: req.session.id,
-          user: req.session.officerId,
-        });
+      res.status(200).json({
+        sucess: true,
+        result,
+        sessionId: req.session.id,
+        user: req.session.officerId,
+      });
     } else {
-      res
-        .status(401)
-        .json({
-          sucess: false,
-          msg: "request unsucessful, rank is unrecognized",
-        });
+      res.status(401).json({
+        sucess: false,
+        msg: "request unsucessful, rank is unrecognized",
+      });
     }
   } catch (error) {
     res
@@ -63,6 +55,33 @@ router.get("/case/:caseId", async (req, res) => {
   }
 });
 
+router.get("/case-stats", async (req, res) => {
+  //Gets the count of all cases. like, CrimeType : count
+
+  try {
+    const result = await CaseModel.aggregate([
+      {
+        $group: { //group by
+          _id: "$crimeType",
+          count: { $sum: 1 },
+        }
+      },
+      {
+        $project: { //projection
+          _id: 0,
+          crime: "$_id",
+          count: 1
+        }
+      }
+    ]);
+
+    return res.status(200).json(result);
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json(error);
+  }
+});
+
 //below are all the get method for officer and realated ops
 
 //get all cases assigned to a officer
@@ -77,25 +96,32 @@ router.get("/case-of-officer/:officerId", checkSignIn, async (req, res) => {
   }
 });
 
-router.get("/all-officers", [checkSignIn, allowOnlyComissioner] , async (req, res) => {
-  
-  const result = await OfficerModel.find();
-  res.status(200).json({ sucess: true, result: result });
-});
-
-router.get("/officer/:officerId", [checkSignIn, allowOnlyComissioner], async (req, res) => {
-  
-  try {
-    const { officerId } = req.params;
-    const result = await OfficerModel.findById(officerId);
+router.get(
+  "/all-officers",
+  [checkSignIn, allowOnlyComissioner],
+  async (req, res) => {
+    const result = await OfficerModel.find();
     res.status(200).json({ sucess: true, result: result });
-  } catch (error) {
-    console.error(error);
-    res.status(401).json({ sucess: true, error: error });
   }
-});
+);
+
+router.get(
+  "/officer/:officerId",
+  [checkSignIn, allowOnlyComissioner],
+  async (req, res) => {
+    try {
+      const { officerId } = req.params;
+      const result = await OfficerModel.findById(officerId);
+      res.status(200).json({ sucess: true, result: result });
+    } catch (error) {
+      console.error(error);
+      res.status(401).json({ sucess: true, error: error });
+    }
+  }
+);
 
 router.get("/get-current-officer-id", async (req, res) => {
+  //this route may be redundant now
   try {
     if (req.session.officerId !== undefined) {
       res.status(200).json({ sucess: true, result: req.session.officerId });
