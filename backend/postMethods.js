@@ -26,10 +26,16 @@ router.post("/case",async (req,res)=>{
 
 
 router.post("/officer", [checkSignIn, allowOnlyComissioner], async (req,res)=>{
-    const data = req.body
+    var data = req.body
     console.log(data);
 
     // actually we should not be able to register 2 officers with SAME email!!! But i havent implemented that validation/feature yet!!!!
+    data = {...data, officerEmail: data.officerEmail.toLowerCase()};
+
+    const alreadyExists = await OfficerModel.findOne({officerEmail: data.officerEmail})
+    if (alreadyExists) {
+        return res.status(401).json({sucess: false, msg: "Officer with same email already exists"})
+    }
 
     const officerDocument = OfficerModel(data)
 
