@@ -29,7 +29,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // console.log(path.join(__dirname, "..", "build")); // ".." goes 1 level up/ 1 lvl back
-// app.use(express.static(path.join(__dirname, "..", "build"))) //serves the build up react app on the same url/domain as server
+// app.use(express.static(path.join(__dirname, "..", "build"))) //serves the build up react app on the same url/domain as server without cors
 
 app.use(
   session({
