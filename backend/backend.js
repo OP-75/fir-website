@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require('cookie-parser')
+// const path = require('path')
 
 const mongoose = require("mongoose");
 const { CaseModel, OfficerModel } = require("./mongoose-schema");
@@ -13,6 +14,7 @@ const loginLogoutMethods = require("./login-logout");
 
 
 const session = require("express-session");
+const { log } = require("console");
 
 const app = express();
 
@@ -26,6 +28,8 @@ app.use(express.json());
 
 app.use(cookieParser());
 
+// console.log(path.join(__dirname, "..", "build")); // ".." goes 1 level up/ 1 lvl back
+// app.use(express.static(path.join(__dirname, "..", "build"))) //serves the build up react app on the same url/domain as server
 
 app.use(
   session({
