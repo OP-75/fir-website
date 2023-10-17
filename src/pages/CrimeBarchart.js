@@ -3,7 +3,7 @@ import Barchart from "./Barchart";
 import Piechart from "./Piechart";
 import { useEffect } from "react";
 import axios from "axios";
-
+import NivoBarChart from "./nivoBar"
 import './CrimeBarchart.css'
 
 export default function CrimeBarchart() {
@@ -39,9 +39,10 @@ export default function CrimeBarchart() {
   return (
     <div className="chart-container">
         <div className="crime-barchart">
-      {chartData && <Barchart chartData={chartData} />}
-      {chartData && <Piechart chartData={chartData} />}
-    </div>
+        {chartData && <Barchart chartData={chartData} />}
+        {chartData && <Piechart chartData={chartData} />}
+        <NivoBarChart/>
+        </div>
     </div>
     
   );
