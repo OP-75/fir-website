@@ -8,6 +8,8 @@ import Swa1 from "sweetalert2";
 
 import "./RegisterNewOfficer.css"
 
+import server_url from "./data/ServerUrl";
+
 /* 
     'officerName'
     'officerRank'
@@ -41,7 +43,7 @@ export default function RegisterNewOfficer(params) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/officer", data,{ withCredentials: true });
+      const response = await axios.post(`${server_url}/officer`, data,{ withCredentials: true });
 
       if (response !== undefined) {
         console.log(response);

@@ -12,6 +12,8 @@ import { useState } from "react";
 
 import COMnavbar from './Home Page/components/COMnavbar'
 
+import server_url from "./data/ServerUrl";
+
 export default function Registration() {
   //imp u have to put useNavigate outside the handleSubmit(or any) function!!!
   const naviagte = useNavigate();
@@ -21,7 +23,7 @@ export default function Registration() {
     console.log(data);
 
     try {
-      const response = await axios.post("http://localhost:5000/case", data);
+      const response = await axios.post(`${server_url}/case`, data);
       console.log(response);
       if (response !== undefined) {
         const caseId = response.data.result._id;

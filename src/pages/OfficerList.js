@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { GrFormView } from "react-icons/gr";
 import { IconContext } from "react-icons";
 
+import server_url from "./data/ServerUrl";
 
 
 export default function CasesList() {
@@ -19,7 +20,7 @@ export default function CasesList() {
   useEffect(() => {
     async function fetchCases(params) {
       try {
-        const response = await axios.get("http://localhost:5000/all-officers", {
+        const response = await axios.get(`${server_url}/all-officers`, {
           withCredentials: true,
         });
         console.log(response);

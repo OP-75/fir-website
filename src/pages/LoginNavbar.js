@@ -2,6 +2,7 @@ import React from "react";
 import "./LoginNavbar.css";
 import {useNavigate } from "react-router-dom";
 import axios from "axios";
+import server_url from "./data/ServerUrl";
 
 export default function LoginNavbar(props) {
 
@@ -9,7 +10,7 @@ export default function LoginNavbar(props) {
     
     const navigate = useNavigate();
   function logout() {
-    //OK THE LOGOUT ERROR WAS BECASUE WE WERENT PASSING data=null below so it was just: ("http://localhost:5000/logout",{ withCredentials: true })
+    //OK THE LOGOUT ERROR WAS BECASUE WE WERENT PASSING data=null below so it was just: ("${server_url}/logout",{ withCredentials: true })
     // SO axios was passing data={ withCredentials: true } and the actual configuration of was set to default ie withCredential was = false
     //so every time we clicked logout the the server made a fresh session and logged out the user with that fresh session, keeping the already logged in session/user
     // as it is,
@@ -20,7 +21,7 @@ export default function LoginNavbar(props) {
     axios.defaults.withCredentials = true;
 
     axios
-      .post("http://localhost:5000/logout", null, { withCredentials: true })
+      .post(`${server_url}/logout`, null, { withCredentials: true })
       .then((response) => {
         console.log(response);
         navigate("/login");

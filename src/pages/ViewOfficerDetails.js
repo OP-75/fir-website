@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 
 import "./ViewOfficerDetails.css"
 
+import server_url from "./data/ServerUrl";
 
 export default function ViewOfficerDetails(){
 
@@ -17,13 +18,13 @@ export default function ViewOfficerDetails(){
         async function fetchOfficerDetail(){
 
             try {
-                const resData = await axios.get(`http://localhost:5000/officer/${officerId}`, {withCredentials:true})
+                const resData = await axios.get(`${server_url}/officer/${officerId}`, {withCredentials:true})
                 const data = resData.data.result
                 console.log(data);
 
                 setOfficerDetails(data)
 
-                const resAssignedCases = await axios.get(`http://localhost:5000/case-of-officer/${officerId}`, {withCredentials:true})
+                const resAssignedCases = await axios.get(`${server_url}/case-of-officer/${officerId}`, {withCredentials:true})
                 console.log(resAssignedCases);
                 const assignedCases = resAssignedCases.data.result
                 const jsxAssignedCases = assignedCases.map((caseJson)=>{

@@ -4,6 +4,8 @@ import axios from "axios";
 
 import "./ViewCaseDetails.css"
 
+import server_url from "./data/ServerUrl";
+
 export default function ViewCaseDetails() {
     const {caseId}  = useParams()
 
@@ -15,7 +17,7 @@ export default function ViewCaseDetails() {
             
             try {
 
-                const resData = await axios.get(`http://localhost:5000/case/${caseId}`, { withCredentials: true });
+                const resData = await axios.get(`${server_url}/case/${caseId}`, { withCredentials: true });
                 const myCase = resData.data.result
                 setCaseDetails(myCase)
                 
