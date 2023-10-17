@@ -7,6 +7,13 @@ const router = express.Router();
 
 //get all data according to officers rank, ie if constable -> return cases in their are, if commissioner -> return all cases
 
+router.get("/", async (req, res) => {
+  //Gets the count of all cases. like, CrimeType : count
+  return res.status(200).json({msg: "Hello world"});
+  
+});
+
+
 router.get("/cases", checkSignIn, async (req, res, next) => {
   try {
     const officerDoc = req.user;
