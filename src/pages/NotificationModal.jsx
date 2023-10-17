@@ -14,6 +14,7 @@ export default function NotificationModal({ isOpen, onClose, caseDetails }) {
     >
       <div className="notification-content">
         <h2>Case Details</h2>
+        <p>Case ID: {caseDetails._id}</p>
         <p>Plaintiff's Name: {caseDetails.userName}</p>
         <p>Victim's Name: {caseDetails.victimName}</p>
         <p>Crime Committed: {caseDetails.crimeType}</p>
@@ -22,6 +23,7 @@ export default function NotificationModal({ isOpen, onClose, caseDetails }) {
         <p>Time of Incident: {caseDetails.crimeDateTime}</p>
         <p>Assigned Officer's ID: {caseDetails.assignedOfficer}</p>
         <p>Assigned Officer's Name: {caseDetails.assignedOfficerName}</p>
+        <p>Case Status: {caseDetails.caseStatus}</p>
         {/* Add more case details as needed */}
         <button onClick={onClose}>Close</button>
       </div>

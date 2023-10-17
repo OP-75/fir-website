@@ -39,9 +39,9 @@ export default function ViewCaseDetails() {
         <div className="case-details">
             <h3 id="case-id">Case ID: {caseId}</h3>
             <div className="user-details">
-                <p className="detail">Complaint's Name: {caseDetails?.userName}</p>
-                <p className="detail">Complaint's Age: {caseDetails?.userAge}</p>
-                <p className="detail">Complaint's Email: {caseDetails?.userEmail}</p>
+                <p className="detail">Complainant's Name: {caseDetails?.userName}</p>
+                <p className="detail">Complainant's Age: {caseDetails?.userAge}</p>
+                <p className="detail">Complainant's Email: {caseDetails?.userEmail}</p>
             </div>
             <div className="victim-details">
                 <p className="detail">Victim's Name: {caseDetails?.victimName}</p>
