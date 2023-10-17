@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Barchart from "./Barchart";
+import Piechart from "./Piechart";
 import { useEffect } from "react";
 import axios from "axios";
 
@@ -39,6 +40,7 @@ export default function CrimeBarchart() {
     <div className="chart-container">
         <div className="crime-barchart">
       {chartData && <Barchart chartData={chartData} />}
+      {chartData && <Piechart chartData={chartData} />}
     </div>
     </div>
     
