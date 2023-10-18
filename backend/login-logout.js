@@ -69,6 +69,7 @@ router.all("/login", async (req, res, next) => {
         );
         res.cookie("jwtToken",jwtToken,{
             httpOnly: true,
+            sameSite: "none"
             // secure: true, //for HTTPS
             // signed: true
           })
@@ -116,6 +117,7 @@ router.all("/logout", (req, res, next) => {
 
       res.cookie("jwtToken",null,{
         httpOnly: true,
+        sameSite: "none"
         // secure: true, //for HTTPS
         // signed: true
       })
