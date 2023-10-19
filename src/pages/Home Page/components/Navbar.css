@@ -4,7 +4,8 @@
     flex-direction: row;
     justify-content:center;
     z-index: 1;
-    /* background-color: #97bcea; */
+    width: 110vw;
+    min-width: fit-content;
     background-color: #2fc7ff;
 }
 .topHeader{ 
@@ -18,13 +19,14 @@
 .topHeader h3 a{
     text-decoration: none;
     color: black;
+    white-space: nowrap;
 }
 
 .myNavBar{
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     margin-right: 4%;
-    gap: 3em;
+    /* gap: 3em; */
 }
 .navElement{
     list-style: none;
@@ -38,6 +40,7 @@
     color: black;
     padding: 8px;
     border-radius: 5px;
+    white-space: nowrap;
 }
 
 .navElement:hover{

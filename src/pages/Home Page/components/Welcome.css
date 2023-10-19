@@ -69,10 +69,10 @@ greyish color (for bg) - #f7f5f5
     position: absolute;
     top: 50px;
     left: 2em;
-    /* margin-left: 2em; */
+    
     width: 50%;
-    padding: 10px;
     display:flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: center;    
 }
+
