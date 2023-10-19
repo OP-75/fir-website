@@ -60,7 +60,7 @@ export default function CasesList() {
         setFetched_data(data);
       } catch (error) {
         console.log(error);
-        window.alert(JSON.stringify(error));
+        window.alert(JSON.stringify(error.response.data));
         navigate("/login");
       }
     }
