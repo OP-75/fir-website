@@ -121,10 +121,10 @@ router.get(
   }
 );
 
-router.get("/get-current-officer-id", async (req, res) => {
+router.get("/get-current-officer-id", checkSignIn, async (req, res) => {
   try {
-    if (req.session.officerId !== undefined) {
-      res.status(200).json({ sucess: true, result: req.session.officerId });
+    if (req.user.id !== undefined) {
+      res.status(200).json({ sucess: true, result: req.user.id });
     } else {
       res.status(401).json({ sucess: false, error: "Please login" });
     }
