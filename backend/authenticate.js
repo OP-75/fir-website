@@ -1,6 +1,6 @@
 
 const jwt = require("jsonwebtoken");
-const { SECRET_KEY } = require("./jwtSecretKey"); //i have made this
+require("dotenv").config() //for enviroment variables
 
 function checkSignIn(req, res, next) {
     try {
@@ -12,7 +12,7 @@ function checkSignIn(req, res, next) {
           .json({ success: false, msg: "Please login" });
       }
   
-      const user = jwt.verify(token, SECRET_KEY);
+      const user = jwt.verify(token, process.env.SECRET_KEY);
       req.user = user;
       next();
     } catch (error) {
