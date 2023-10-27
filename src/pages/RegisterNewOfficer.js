@@ -79,6 +79,7 @@ export default function RegisterNewOfficer(params) {
   return (
     <div className="register-new-officer">
       <form>
+        <h2>Register new officer</h2>
         <input
           type="text"
           placeholder="Officer name"
@@ -91,7 +92,7 @@ export default function RegisterNewOfficer(params) {
         </select>
         <input
           type="email"
-          placeholder="officer Email"
+          placeholder="Officer Email"
           name="officerEmail"
           onChange={handleChange}
           required

@@ -36,17 +36,12 @@ input, textarea{
     width: 380px;
     height: 40px;
     box-sizing: border-box;
-    font-family: 'Oswald', sans-serif;
-
+    /* font-family: 'Oswald', sans-serif; */
 }
 textarea{
     resize: none;
     height: 100px;
     box-sizing: border-box;
-}
-
-textarea::placeholder{
-    font-family: 'Oswald', sans-serif;
 }
 
 input::-webkit-outer-spin-button,
