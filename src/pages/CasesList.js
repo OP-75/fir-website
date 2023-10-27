@@ -7,6 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { IconContext } from "react-icons";
 
+import server_url from "./data/ServerUrl";
+
 export default function CasesList() {
   axios.defaults.withCredentials = true;
 
@@ -17,7 +19,7 @@ export default function CasesList() {
   useEffect(() => {
     async function fetchCases(params) {
       try {
-        const response = await axios.get("http://localhost:5000/cases", {
+        const response = await axios.get(`${server_url}/cases`, {
           withCredentials: true,
         });
         
@@ -58,7 +60,7 @@ export default function CasesList() {
         setFetched_data(data);
       } catch (error) {
         console.log(error);
-        window.alert(JSON.stringify(error?.response?.data));
+        window.alert(JSON.stringify(error.response.data));
         navigate("/login");
       }
     }
@@ -71,7 +73,7 @@ export default function CasesList() {
 
     try {
       const axiosResponse = await axios.delete(
-        `http://localhost:5000/case/${id}`
+        `${server_url}/case/${id}`
       );
       if (axiosResponse.data.sucess) {
         console.log(`${id} deleted`);

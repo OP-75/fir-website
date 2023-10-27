@@ -6,6 +6,8 @@ import axios from "axios";
 import NivoBarChart from "./nivoBar"
 import './CrimeBarchart.css'
 
+import server_url from "./data/ServerUrl";
+
 export default function CrimeBarchart() {
   
   const [chartData, setChartData] = useState(null);
@@ -13,7 +15,7 @@ export default function CrimeBarchart() {
   useEffect(() => {
     async function fetchStats() {
       try {
-        var result = await axios.get(`http://localhost:5000/case-stats`);
+        var result = await axios.get(`${server_url}/case-stats`);
         result = result.data
         if (result) {
           //this is how data should be formatted for react-chart

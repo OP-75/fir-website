@@ -7,7 +7,6 @@ export default function Welcome(){
     {/* <img src={bg} alt="" width="100%" height="900px"/> */}
     <div className="bgImg">
         <div className="moto">
-            {/* <div className="bubble bub3"></div> */}
             <h1>Empowering Citizens, Ensuring Justice</h1>
         </div>
         <div className="mssg">

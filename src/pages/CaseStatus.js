@@ -4,6 +4,8 @@ import axios from "axios";
 import "./CaseStatus.css";
 import COMnavbar from './Home Page/components/COMnavbar'
 
+import server_url from "./data/ServerUrl";
+
 export default function CaseStatus() {
   // gets the route parameter (caseId) -- route param is /case-status/:caseId , here "caseId" is route param
   const { caseId } = useParams();
@@ -20,7 +22,7 @@ export default function CaseStatus() {
     // use effect call backs should be async to prevent race conditions
     async function fetchAndSetStatus() {
       try {
-        const resData = await axios.get(`http://localhost:5000/case/${caseId}`, { withCredentials: true });
+        const resData = await axios.get(`${server_url}/case/${caseId}`, { withCredentials: true });
 
         setStatus({
           assignedOfficerName: resData.data.result.assignedOfficerName,

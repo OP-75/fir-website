@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import COMnavbar from './Home Page/components/COMnavbar'
 
+import server_url from "./data/ServerUrl";
 
 import "./Login.css"
 
@@ -28,7 +29,7 @@ export default function Login(){
     event.preventDefault();
     
     try {
-      const response = await axios.post("http://localhost:5000/login", data, { withCredentials: true });
+      const response = await axios.post(`${server_url}/login`, data, { withCredentials: true });
       console.log(response);
       
       if(response===undefined){

@@ -1,8 +1,8 @@
+require('dotenv').config()
 const express = require("express");
 const { CaseModel, OfficerModel } = require("./mongoose-schema");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const {SECRET_KEY} = require('./jwtSecretKey'); //i have made this
 
 const router = express.Router();
 
@@ -53,7 +53,7 @@ router.all("/login", async (req, res, next) => {
           officerRank: result.officerRank,
           officerDesignatedArea: result.officerDesignatedArea,
         },
-        SECRET_KEY,
+        process.env.SECRET_KEY,
         { expiresIn: "1h" }
       );
 
@@ -69,7 +69,8 @@ router.all("/login", async (req, res, next) => {
         );
         res.cookie("jwtToken",jwtToken,{
             httpOnly: true,
-            // secure: true, //for HTTPS
+            sameSite: process.env.SAME_SITE,
+            secure: process.env.SECURE==="true"? true:false, //for vercel deployment 
             // signed: true
           })
 
@@ -116,7 +117,8 @@ router.all("/logout", (req, res, next) => {
 
       res.cookie("jwtToken",null,{
         httpOnly: true,
-        // secure: true, //for HTTPS
+        sameSite: process.env.SAME_SITE,
+        secure: process.env.SECURE==="true"? true:false, //for vercel deployment 
         // signed: true
       })
 

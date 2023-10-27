@@ -3,11 +3,12 @@ import axios from "axios";
 
 import { AiFillDelete } from "react-icons/ai";
 import { IconContext } from "react-icons";
+import server_url from "../data/ServerUrl"
 
 export default function OfficerDeleteButton(props) {
   async function handleClick() {
     try {
-      await axios.delete(`http://localhost:5000/officer/${props.officerId}`,{ withCredentials: true });
+      await axios.delete(`${server_url}/officer/${props.officerId}`,{ withCredentials: true });
 
       window.location.reload()
     } catch (error) {

@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 
+import server_url from "./data/ServerUrl";
+
 import "./EditCase.css";
 
 export default function EditCase() {
@@ -18,7 +20,7 @@ export default function EditCase() {
   const navigate = useNavigate();
   useEffect(() => {
     async function fetchData() {
-      const resData = await axios.get(`http://localhost:5000/case/${caseId}`, {
+      const resData = await axios.get(`${server_url}/case/${caseId}`, {
         withCredentials: true,
       });
       // console.log(resData);
@@ -38,7 +40,7 @@ export default function EditCase() {
       //get current officer id as well to verify before porcceding
       try {
         const axiosRes = await axios.get(
-          `http://localhost:5000/get-current-officer-id`,
+          `${server_url}/get-current-officer-id`,
           { withCredentials: true }
         );
         const currOfficerId = axiosRes.data.result;
@@ -95,7 +97,7 @@ export default function EditCase() {
 
     try {
       const res = await axios.put(
-        `http://localhost:5000/case/${caseId}`,
+        `${server_url}/case/${caseId}`,
         caseDetails,
         { withCredentials: true }
       );
