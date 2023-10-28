@@ -113,9 +113,9 @@ export default function EditCase() {
   }
 
   return (
-    <div className="edit-case">
-      <h4>Case ID: {caseId}</h4>
+    <div>
       <form className="edit-case" onSubmit={handleSubmit}>
+      <h4>Case ID: {caseId}</h4>
         <input
           type="text"
           name="assignedOfficer"

@@ -21,6 +21,7 @@ export default function ViewFirStatus() {
         <div className="view-fir-status">
             <COMnavbar/>
             <form onSubmit={redirectOnSubmit}>
+                <legend>Enter Case Id:</legend>
                 <input type="text" name="id" onChange={
                     (e)=>{
                     const val = e.target.value

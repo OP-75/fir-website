@@ -1,48 +1,36 @@
 .case-details {
-    font-family: Arial, sans-serif;
-    border: 1px solid #ccc;
-    padding: 20px;
+    font-family: 'Raleway', sans-serif;
+    border: 1px solid #ddd;
+    padding: 25px;
     border-radius: 10px;
-    background-color: #d6d6d6;
     max-width: 600px;
     margin: 3rem auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
 .detail {
-    margin: 5px;
+    margin: 10px 0;
     font-size: 16px;
+    text-align: left;
 }
 
-#case-id {
-    font-size: 24px;
-    margin: 0 0 10px;
+.user-details,
+.victim-details,
+.crime-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+    padding-bottom: 15px;
+    text-align: left;
+}
+
+.officer-info,
+.case-status {
+    font-weight: bold;
     color: #333;
 }
 
-.officer-info, .case-status {
-    font-weight: bold;
-    color: #007bff;
+.imp-details {
+    text-align: center;
 }
-
-.case-status {
-    font-size: 20px;
-    margin-top: 10px;
-}
-
-.user-details, .victim-details, .crime-details {
-    border-top: 1px solid #ccc;
-    padding-top: 15px;
-    margin-top: 15px;
-}
-
-.user-details, .victim-details {
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 15px;
-}
-
-.user-details .detail, .victim-details .detail, .crime-details .detail {
-    color: #272727;
-    font-weight: bold;
-}
-
-

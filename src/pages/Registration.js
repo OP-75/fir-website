@@ -101,6 +101,7 @@ export default function Registration() {
         <div className="col-1">
           <legend>Crime Details</legend>
           <select
+            id="crimeType"
             required
             value={crimeData.crimeType}
             onChange={(e) =>
@@ -118,7 +119,9 @@ export default function Registration() {
             <option value="Traffic">Traffic</option>
             <option value="Lost and Found">Lost and Found</option>
           </select>
+
           <select
+            id="crimeArea"
             required
             value={crimeData.crimeArea}
             onChange={(e) =>
@@ -132,6 +135,7 @@ export default function Registration() {
           </select>
 
           <input
+            id="crimeAddress"
             type="text"
             placeholder="Crime Address"
             value={crimeData.crimeAddress}
@@ -141,6 +145,7 @@ export default function Registration() {
           />
 
           <input
+            id="crimeDateTime"
             type="datetime-local"
             placeholder="Date and Time of Crime"
             value={crimeData.crimeDateTime}
@@ -151,6 +156,7 @@ export default function Registration() {
 
           <legend>Victim Details</legend>
           <input
+            id="victimName"
             type="text"
             placeholder="Victim Name *"
             value={victimData.victimName}
@@ -160,6 +166,7 @@ export default function Registration() {
             required
           />
           <input
+            id="victimAge"
             type="number"
             placeholder="Victim Age"
             value={victimData.victimAge}
@@ -168,6 +175,7 @@ export default function Registration() {
             }
           />
           <select
+            id="victimGender"
             value={victimData.victimGender}
             onChange={(e) =>
               setVictimData({ ...victimData, victimGender: e.target.value })
@@ -182,6 +190,7 @@ export default function Registration() {
           </select>
 
           <input
+            id="victimRelation"
             type="text"
             placeholder="Family Member Relation *"
             value={victimData.victimRelation}
@@ -195,6 +204,7 @@ export default function Registration() {
         <div className="col-2">
           <legend>User Details</legend>
           <input
+            id="userName"
             type="text"
             placeholder="User Name *"
             value={userData.userName}
@@ -203,7 +213,9 @@ export default function Registration() {
             }
             required
           />
+
           <input
+            id="userAge"
             type="number"
             placeholder="User Age *"
             value={userData.userAge}
@@ -212,7 +224,9 @@ export default function Registration() {
             }
             required
           />
+
           <select
+            id="userGender"
             value={userData.userGender}
             onChange={(e) =>
               setUserData({ ...userData, userGender: e.target.value })
@@ -227,6 +241,7 @@ export default function Registration() {
             <option value="Other">Other</option>
           </select>
           <input
+            id="userEmail"
             type="email"
             placeholder="User Email *"
             value={userData.userEmail}
@@ -238,6 +253,7 @@ export default function Registration() {
 
           <legend>Additional Details</legend>
           <input
+            id="proofOfCrime"
             type="file"
             capture="user"
             value={additionalData.proofOfCrime}
@@ -249,6 +265,7 @@ export default function Registration() {
             }
           />
           <input
+            id="witnesses"
             type="text"
             placeholder="Witness Name   (Type your own name if you are witness)"
             value={additionalData.witnesses}
@@ -260,6 +277,7 @@ export default function Registration() {
             }
           />
           <textarea
+            id="additionalInfo"
             placeholder="Additional Info"
             value={additionalData.additionalInfo}
             onChange={(e) =>

@@ -25,29 +25,29 @@
 }
 
 
-.navElement{
+.navElem{
     list-style: none;
     cursor: pointer;
     padding: 8px;
     border-radius: 5px;
 }
 
-.navElement button{
+.navElem button{
     text-decoration: none;
-    color: black;
+    /* color: white; */
     padding: 8px;
     border-radius: 5px;
+    background-color: #23c3fd;
     border: none;
     height: fit-content;
 }
 
-.navElement:hover{
+.navElem:hover{
     cursor: pointer;
     background-color: transparent;
     color:whitesmoke;
-
 }
-.navElement button:hover{
+.navElem button:hover{
     cursor: pointer;
     background-color: #221044;
     color:whitesmoke;

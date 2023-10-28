@@ -36,24 +36,24 @@ export default function LoginNavbar(props) {
     <>
       <div className="box-1">
         <header className="topHeader">
-          <h3>Officer DashBoard</h3>
+          <h3>Officer Dashboard</h3>
         </header>
 
         <ul className="myNavBar">
-          <li className="navElement">
+          <li className="navElem">
             <button onClick={()=>{setComToLoad("chart")}}>View Crime Statistics</button>
           </li>
-          <li className="navElement">
+          <li className="navElem">
             <button onClick={()=>{setComToLoad("cases-list")}}>Manage all cases</button>
           </li>
-          <li className="navElement">
+          <li className="navElem">
             <button onClick={()=>{setComToLoad("all-officer")}}>Manage all officers</button>
           </li>
-          <li className="navElement">
+          <li className="navElem">
             <button onClick={()=>{setComToLoad("register-officer")}}>Register Officers</button>
           </li>
 
-          <li className="navElement" >
+          <li className="navElem" >
             <button id="logout-btn" onClick={logout}>Logout</button>
           </li>
         </ul>

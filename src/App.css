@@ -61,12 +61,13 @@
   tr:nth-child(even){
     background-color: rgba(140, 184, 249, 0.4);
   }
-  th:nth-child(even),td:nth-child(even){
+  /* th:nth-child(even),td:nth-child(even){
     background-color: rgba(140, 184, 249, 0.4);
-  }
+  } */
   th{
     background-color: rgba(140, 184, 249, 0.4);
     min-width: 80px;
+    /* color: whitesmoke; */
   }
   td, th{
     border: 1px solid gray;

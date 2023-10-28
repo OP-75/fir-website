@@ -1,99 +1,75 @@
-/* 
 .edit-case {
-
-    height: 70%;
-    width: 70%;
-
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-    align-items: center;
+  max-width: 500px;
+  margin: 5% auto;
+  padding: 30px; /* Increased padding for better spacing */
+  background-color: #fff; /* White background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9); /* Subtle box shadow effect */
+  border-radius: 8px;
+  border: 0.5px solid black;
 }
 
-.edit-case input, label{
-    height: 0px;
-    width: 0px; 
+.edit-case h4 {
+  font-size: 24px; /* Increased font size for better emphasis */
+  margin-bottom: 15px; /* Increased margin bottom for better spacing */
+  color: #333;
+  text-align: center;
+}
 
-    margin: 0px;
-    padding: 0;
-} */
+.edit-case input {
+  width: 80%;
+  padding: 12px; /* Increased padding for better visual appeal */
+  margin-bottom: 20px; /* Increased margin bottom for better spacing */
+  border: 1px solid #ddd; /* Lighter border color for better contrast */
+  border-radius: 5px;
+  outline: none;
+}
 
+.edit-case label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 15px; /* Increased margin bottom for better spacing */
+  color: #333; /* Darker text color for better contrast */
+}
 
-.edit-case {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-  }
-  
-  .edit-case h4 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .edit-case input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .edit-case label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 8px;
-  }
-  
-  .edit-case button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .edit-case button:hover {
-    background-color: #0056b3;
-  }
-  
-  .edit-case input[type="checkbox"] {
-    margin-right: 10px;
-    vertical-align: middle;
-  }
-  
-  /* Style the label for the checkbox */
-  .edit-case label[for="assignMe"] {
-    display: flex;
-    align-items: center;
-    font-weight: normal;
-    margin-bottom: 10px;
-    color: #555;
-  }
-  
-  /* Style the checkbox itself */
-  .edit-case input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-  }
-  
-  /* Customize the appearance of the checkbox when checked */
-  .edit-case input[type="checkbox"]:checked {
-    background-color: #007bff;
-  }
-  
-  /* Style the submit button */
-  .edit-case button[type="submit"] {
-    background-color: #28a745;
-  }
-  
-  .edit-case button[type="submit"]:hover {
-    background-color: #218838;
-  }
-  
+.edit-case button {
+  width: 100%;
+  padding: 14px 24px; /* Increased padding for better visual appeal */
+  background-color: #23c3fd;
+  color: #ffffff; /* White text color for better contrast */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px; /* Increased font size for better emphasis */
+  margin-top: 20px; /* Increased margin top for better spacing */
+}
+
+.edit-case button:hover {
+  background-color: #1d9ed8; /* Slightly darker shade of the main theme color on hover */
+}
+
+.edit-case input[type="checkbox"] {
+  margin-right: 10px;
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+}
+
+.edit-case label[for="assignMe"] {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  margin-bottom: 15px; /* Increased margin bottom for better spacing */
+  color: #333; /* Darker text color for better contrast */
+}
+
+.edit-case input[type="checkbox"]:checked {
+  background-color: #23c3fd;
+}
+
+.edit-case button[type="submit"] {
+  background-color: #23c3fd;
+}
+
+.edit-case button[type="submit"]:hover {
+  background-color: #1d9ed8;
+}
