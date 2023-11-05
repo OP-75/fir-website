@@ -6,35 +6,29 @@
     text-decoration: none;
 }
 
-
-
-
 #case-container{
-
     height: 100vh;
-
-    background-color: blue;
-
+    background-color: #23c3fd;
     display: flex;
     flex-direction: column;
-
     justify-content: center;
     align-items: center;
-
-
 }
 
 #contents{
     
     width: fit-content;
-
+    border: 1px solid black;
+    box-shadow: -6px 1px 200px 3px rgba(0,0,0,0.33);
+-webkit-box-shadow: -6px 1px 200px 3px rgba(0,0,0,0.33);
+-moz-box-shadow: -6px 1px 200px 3px rgba(0,0,0,0.33);
     display: flex;
     flex-direction: column;
-
+    
     justify-content: center;
     align-items: center;
 
-    background-color: white;
+    background-color: #fff;
     border-radius: 10px;
 
     padding: 20px;
