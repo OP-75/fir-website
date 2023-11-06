@@ -19,7 +19,7 @@ export default function Navbar(props){
         <>
         <div className="box-1">
             <header className="topHeader">
-                <h3><Link to={"/"} >Welcome to FIR Management System</Link></h3>
+                <h3><Link to={"/"} >Welcome to FIR Management Project</Link></h3>
                 <img src="" alt="" />
             </header>
             <ul className="myNavBar">
