@@ -66,7 +66,6 @@ export default function CrimeBarchart() {
         {chartData && <Barchart chartData={chartData} />}
         {chartData && <Piechart chartData={chartData} />}
         {chartData && <LineChart chartData={chartData} />}
-        <NivoBarChart/>
         </div>
     </div>
     
