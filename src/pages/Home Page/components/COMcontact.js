@@ -1,6 +1,5 @@
 import React from "react";
 import "./Contact.css"
-import bgImg from "./police.jpg"
 
 function submitFun(){
     alert("Thank you for your response!")

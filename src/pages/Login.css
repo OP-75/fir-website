@@ -89,14 +89,3 @@ extra-large-device: 1200px; */
     width: 60%;
   }
 }
-
-/* Media queries for small devices */
-@media (min-width: var(--large-device)) {
-  .form-group {
-    width: 50vw;
-  }
-
-  button[type="submit"] {
-    width: 40%;
-  }
-}
