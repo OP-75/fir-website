@@ -1,21 +1,31 @@
 .register-new-officer {
-  max-width: 500px;
+  max-width: 50%;
   margin: 10% auto;
-  padding: 20px;
+  padding: 5%;
   background-color: #ffffff; /* Light background color */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 3vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .register-new-officer form {
   border: none;
   width: 60%;
   max-width: 500px;
-  margin: auto;
-  padding: 20px;
+  
+  padding: 0;
   background-color: #ffffff; /* Light background color */
   border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .register-new-officer input,
@@ -42,4 +52,59 @@
 
 .register-new-officer button:hover {
   background-color: #1d9ed8; /* Slightly darker shade of the main theme color on hover */
+}
+
+
+
+
+/* small-device: 576px;
+medium-device: 768px;
+large-device: 992px;
+extra-large-device: 1200px; */
+
+/* Media queries for smaller devices */
+@media (max-width: 576px) {
+
+  .register-new-officer{
+    min-width: 90vw;
+    max-width: 90vw;
+  }
+
+  .register-new-officer form {
+    
+    width: 95%;
+    
+    padding: 20px;
+    background-color: #ffffff; /* Light background color */
+    border-radius: 8px;
+  }
+
+}
+
+/* Media queries for medium devices */
+@media (max-width: 768px) {
+  .register-new-officer{
+    max-width: 90vw;
+    min-width: 90vw;
+
+    padding: 2%;
+  }
+
+  .register-new-officer form {
+    min-width: 100%;
+    width: 100%;
+    padding: 0;
+  }
+
+  .register-new-officer input,
+  .register-new-officer select{
+
+    width: 100%;
+    min-width: 100%;
+
+  }
+
+  .register-new-officer button{
+    max-width: 50%;
+  }
 }

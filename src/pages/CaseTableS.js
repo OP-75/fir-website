@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useTable, useGlobalFilter } from "react-table";
 import NotificationModal from "./NotificationModal";
 import "./notification.css";
-import "./table.css"
+import "./CaseTableS.css"
 
 import { AiFillEye } from "react-icons/ai";
 import { IconContext } from "react-icons";
@@ -104,7 +104,7 @@ export default function CaseTableS(props) {
   const { globalFilter } = state;
 
   return (
-    <div>
+    <div className="table-container">
       <input
         id="searchbar"
         type="text"
