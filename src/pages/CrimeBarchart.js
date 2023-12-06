@@ -3,7 +3,6 @@ import Barchart from "./Barchart";
 import Piechart from "./Piechart";
 import { useEffect } from "react";
 import axios from "axios";
-import NivoBarChart from "./nivoBar"
 import './CrimeBarchart.css'
 
 import server_url from "./data/ServerUrl";

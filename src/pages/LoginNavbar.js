@@ -4,9 +4,20 @@ import {useNavigate } from "react-router-dom";
 import axios from "axios";
 import server_url from "./data/ServerUrl";
 
+//bootstrap imports:
+import { Container, Nav, Navbar} from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css"; //import bootstrap css
+
+
 export default function LoginNavbar(props) {
 
     const setComToLoad = props.setComToLoad;
+
+    function loadCustomComponent(event, componentToLoad) {
+      event.preventDefault();
+      setComToLoad(componentToLoad)
+    }
+
     
     const navigate = useNavigate();
   function logout() {
@@ -32,32 +43,68 @@ export default function LoginNavbar(props) {
       });
   }
 
+
   return (
-    <>
-      <div className="box-1">
-        <header className="topHeader">
-          <h3>Officer Dashboard</h3>
-        </header>
+    <Navbar expand="lg" className="navbar-container">
+      <Container fluid>
+        <Navbar.Brand
+          href="/"
+          className="m-1 font-weight-bolder welcomeMessage"
+        >
+          FIR Management Project
+        </Navbar.Brand>
 
-        <ul className="myNavBar">
-          <li className="navElem">
-            <button onClick={()=>{setComToLoad("chart")}}>View Crime Statistics</button>
-          </li>
-          <li className="navElem">
-            <button onClick={()=>{setComToLoad("cases-list")}}>Manage all cases</button>
-          </li>
-          <li className="navElem">
-            <button onClick={()=>{setComToLoad("all-officer")}}>Manage all officers</button>
-          </li>
-          <li className="navElem">
-            <button onClick={()=>{setComToLoad("register-officer")}}>Register Officers</button>
-          </li>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="ms-auto">
+            <Nav.Link
+              href="/"
+              className="px-lg-3 mx-lg-3 text-black navElement"
+              onClick={(event)=>{loadCustomComponent(event, "chart")}}
+            >
+              View Crime Statistics
+            </Nav.Link>
 
-          <li className="navElem" >
-            <button id="logout-btn" onClick={logout}>Logout</button>
-          </li>
-        </ul>
-      </div>
-    </>
+            <Nav.Link
+              href="/"
+              className="px-lg-3 mx-lg-3 text-black navElement"
+              onClick={(event)=>{loadCustomComponent(event, "cases-list")}}
+            >
+              Manage all cases
+            </Nav.Link>
+
+            <Nav.Link
+              href="/"
+              className="px-lg-3 mx-lg-3 text-black navElement"
+              onClick={(event)=>{loadCustomComponent(event, "all-officer")}}
+            >
+              Manage all officers
+            </Nav.Link>
+
+            <Nav.Link
+              href="/"
+              className="px-lg-3 mx-lg-3 text-black navElement"
+              onClick={(event)=>{loadCustomComponent(event, "register-officer")}}
+            >
+              Register Officer
+            </Nav.Link>
+
+
+            
+
+
+            <Nav.Link
+              href="/login"
+              className="px-lg-3 mx-lg-3 text-black"
+              id="login"
+              onClick={logout}
+            >
+              Logout
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
+
 }

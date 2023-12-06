@@ -3,12 +3,20 @@ try this colors:
 greyish color (for bg) - #f7f5f5 
 */
 
+.text-content{
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 20vh;
+}
+
 .bgImg{
     /* background-color: rgb(79, 145, 231); */
     min-height: 400px;
     display: flex;
     flex-direction: row;
     position: relative;
+    width: 100vw;
 }
 
 .bubble{
@@ -34,19 +42,18 @@ greyish color (for bg) - #f7f5f5
     top: 285px;
     left: 57px;
 }
+
 .mssg{
-    flex:3;
     display:flex;
     flex-direction: column;
-    padding: 40px;
     justify-content: center;
     align-items: center;
-    /* background-color: #927dfa; */
     margin: 15px;
+
 }
 
 .mssg h3{
-    margin-top: 65px;
+    margin-top: 10%;
 }
 .splash{
     flex:4;
@@ -64,15 +71,18 @@ greyish color (for bg) - #f7f5f5
     border-radius: 60%;
 }
 .moto{
-    /* background-color: #927dfa; */
-    z-index: 10;
-    position: absolute;
-    top: 50px;
-    left: 2em;
     
-    width: 50%;
+    z-index: 10;
+    
+    width: 100%;
+
     display:flex;
     flex-direction: row;
-    justify-content: center;    
+    justify-content: center;
+
+    margin-top: 10vh;
+
 }
+
+
 
