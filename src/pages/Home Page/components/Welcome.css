@@ -3,86 +3,133 @@ try this colors:
 greyish color (for bg) - #f7f5f5 
 */
 
-.text-content{
-    display: flex;
-    flex-direction: column;
+.text-content {
+  display: flex;
+  flex-direction: column;
 
-    margin-bottom: 20vh;
+  margin-bottom: 20vh;
 }
 
-.bgImg{
-    /* background-color: rgb(79, 145, 231); */
-    min-height: 400px;
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    width: 100vw;
+.bgImg {
+  /* background-color: rgb(79, 145, 231); */
+  min-height: 400px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100vw;
 }
 
-.bubble{
-    display: flex;
-    width: 100px;
-    height: 100px;
-    background-color: #1e9dcb;
-    border-radius: 50%;
+.bubble {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  background-color: #1e9dcb;
+  border-radius: 50%;
 }
 
-.bub1{
-    position: relative;
-    top: 5px;
+.bub1 {
+  position: relative;
+  top: 5px;
 }
 
-.bub2{
-    position: relative;
-    top: 65%;
+.bub2 {
+  position: relative;
+  top: 65%;
 }
 
-.bub3{
-    position: absolute;
-    top: 285px;
-    left: 57px;
+.bub3 {
+  position: absolute;
+  top: 285px;
+  left: 57px;
 }
 
-.mssg{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 15px;
-
+.mssg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  text-align: center;
 }
 
-.mssg h3{
-    margin-top: 10%;
+.mssg h3 {
+  margin-top: 10%;
+  text-align: center;
 }
-.splash{
-    flex:4;
-    padding: 40px;
-    display: flex;
-    justify-content: center;
+.splash {
+  flex: 4;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
 }
 
-.splash img{
-    /* 
+.splash img {
+  /* 
     look for another image...this is not perfect round
     */
-    width: 350px;
-    height: 350px;
-    border-radius: 60%;
+  width: 350px;
+  height: 350px;
+  border-radius: 60%;
 }
-.moto{
-    
-    z-index: 10;
-    
-    width: 100%;
+.moto {
+  z-index: 10;
 
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
+  width: 100%;
 
-    margin-top: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
+  text-align: center;
+
+  margin-top: 10vh;
 }
 
+/* small-device: 576px;
+medium-device: 768px;
+large-device: 992px;
+extra-large-device: 1200px; */
+
+/* Media queries for smaller devices */
+@media (max-width: 576px) {
+
+    .bgImg{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .splash img {
+        width: 350px;
+        height: 350px;
+        max-width: 98%;
+        border-radius: 100%;
+    }
 
 
+  .bub1, .bub2, .bub3 {
+    display: none;
+  }
+}
+
+/* Media queries for medium devices */
+@media (max-width: 768px) {
+
+    .bgImg{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .splash img {
+        width: 350px;
+        height: 350px;
+        max-width: 98%;
+        border-radius: 100%;
+    }
+
+
+  .bub1, .bub2, .bub3 {
+    display: none;
+  }
+
+}
