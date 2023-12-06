@@ -37,7 +37,7 @@ export default function CasesList() {
               <div className="edit-button">
                 <Link to={`/cases/edit/${item._id}`}>
                   <IconContext.Provider
-                    value={{ color: "black", size: "15px" }}
+                    value={{ color: "black", size: 40 }}
                   >
                     <AiFillEdit className="on-hover-pointer" />
                   </IconContext.Provider>
@@ -48,7 +48,7 @@ export default function CasesList() {
             deleteButton: (
               <div className="delete-button">
                 <IconContext.Provider
-                    value={{ color: "black", size: "20px" }}
+                    value={{ color: "black", size: 40 }}
                   >
                   <AiFillDelete className="on-hover-pointer" name={item._id} id={item._id} onClick={handleDelete}/>
                   </IconContext.Provider>

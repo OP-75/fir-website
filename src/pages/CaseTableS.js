@@ -133,7 +133,7 @@ export default function CaseTableS(props) {
                       {/* Check if the current cell corresponds to the "View Details" column */}
                       {cell.column.id === "viewDetails" ? (
                         <IconContext.Provider
-                          value={{ color: "black", size: "15px" }}
+                          value={{ color: "black", size: 40 }}
                         >
                           <AiFillEye
                             className="on-hover-pointer"

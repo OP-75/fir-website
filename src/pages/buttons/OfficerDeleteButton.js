@@ -18,7 +18,7 @@ export default function OfficerDeleteButton(props) {
 
   return (
   <IconContext.Provider
-    value={{ color: "black", size: "20px" }}
+    value={{ color: "black", size: 40 }}
   >
   <AiFillDelete className="on-hover-pointer" onClick={handleClick}/>
   </IconContext.Provider>

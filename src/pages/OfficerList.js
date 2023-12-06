@@ -8,7 +8,7 @@ import OfficerDeleteButton from "./buttons/OfficerDeleteButton";
 
 import { Link } from "react-router-dom";
 
-import { GrFormView } from "react-icons/gr";
+import { AiFillEye } from "react-icons/ai";
 import { IconContext } from "react-icons";
 
 import server_url from "./data/ServerUrl";
@@ -37,8 +37,8 @@ export default function CasesList() {
               <td className="view-button">
                 <Link to={`/cases/view-officer-details/${item._id}`}>
                   <IconContext.Provider
-                    value={{ color: "black", size: "25px" }}>
-                    <GrFormView />
+                    value={{ color: "black", size: 40 }}>
+                    <AiFillEye className="on-hover-pointer"/>
                   </IconContext.Provider>
                 </Link>
               </td>
