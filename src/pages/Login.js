@@ -47,8 +47,8 @@ export default function Login(){
       }
       
     } catch (error) {
-      console.log(error);
-      window.alert(JSON.stringify(error?.response?.data))
+      console.log(JSON.stringify(error));
+      window.alert(JSON.stringify(error?.response))
       return;
     }
   }

@@ -1,60 +1,102 @@
-/* .container {
-    height: 100vh;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    
-} */
+
+.login-form-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.form-group {
+  width: 50vw;
   
+  margin: auto;
+  margin-top: 10vh;
+  border: none;
+  
+  padding: 6vh 10vw;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: rgb(240, 240, 240);
+  
+  border-radius: 20px;
+  
+  -webkit-box-shadow: 0px 10px 31px 1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 10px 31px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 10px 31px 1px rgba(0, 0, 0, 0.25);
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  /* font-size: 16px; */
+  box-sizing: border-box;
+  margin-bottom: 8px;
+}
+
+button[type="submit"] {
+
+  width: 40%;
+  margin-top: 10%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+
+/* small-device: 576px;
+medium-device: 768px;
+large-device: 992px;
+extra-large-device: 1200px; */
+
+/* Media queries for smaller devices */
+@media (max-width: 576px) {
   .form-group {
-
-    max-width: 25vw;
-
-    margin: auto;
-    margin-top: 10vh;
-    border: none;
-
-    padding: 6vh 10vw;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    background-color: rgb(240, 240, 240);
-
-    border-radius: 20px;
-
-    -webkit-box-shadow: 0px 10px 31px 1px rgba(0,0,0,0.25);
--moz-box-shadow: 0px 10px 31px 1px rgba(0,0,0,0.25);
-box-shadow: 0px 10px 31px 1px rgba(0,0,0,0.25);
+    width: 90vw;
+    padding: 3vh 5vw;
   }
-  
-  input[type="email"],
-  input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    /* font-size: 16px; */
-    box-sizing: border-box;
-    margin-bottom: 8px;
+
+  .form-group h2{
+    font-size: large;
   }
-  
+
   button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+    margin-top: 10%;
+    width: 60%;
   }
-  
-  button[type="submit"]:hover {
-    background-color: #0056b3;
+}
+
+/* Media queries for medium devices */
+@media (max-width: 768px) {
+  .form-group {
+    width: 65vw;
   }
 
+  button[type="submit"] {
+    margin-top: 10%;
+    width: 60%;
+  }
+}
+
+/* Media queries for small devices */
+@media (min-width: var(--large-device)) {
+  .form-group {
+    width: 50vw;
+  }
+
+  button[type="submit"] {
+    width: 40%;
+  }
+}
