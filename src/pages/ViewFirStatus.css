@@ -39,7 +39,7 @@
 
 .view-fir-status form button {
     width: 40%;
-    height: 40px;
+    height: fit-content;
     background-color: #23c3fd;
     color: #424242;
     border: none;
@@ -65,16 +65,14 @@ extra-large-device: 1200px; */
 /* Media queries for smaller devices */
 @media (max-width: 576px) {
     .view-fir-status form {
-    
         width: 90vw;
         margin-top: 5%;
-
-        padding: 5%
+        padding: 2%;
     }
       
     .view-fir-status form button[type="submit"] {
       margin-top: 10%;
-      width: 60%;
+      width: 80%;
     }
   }
   
@@ -85,7 +83,7 @@ extra-large-device: 1200px; */
         width: 90vw;
         margin-top: 5%;
 
-        padding: 5% 10%;
+        padding: 5%;
     }
       
     .view-fir-status form button[type="submit"] {

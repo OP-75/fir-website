@@ -1,7 +1,14 @@
 
+/* !IMP Using display flex changes how elements grow n shrink. Use min-width or max-width if u r having trouble changing width */
+
 .login-form-container {
   width: 100vw;
   height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  flex: 0 0 auto;
 }
 
 .form-group {
@@ -64,8 +71,15 @@ extra-large-device: 1200px; */
 /* Media queries for smaller devices */
 @media (max-width: 576px) {
   .form-group {
-    width: 90vw;
-    padding: 3vh 5vw;
+    width: 100%;
+    min-width: 90%;
+    padding: 2vh 4vw;
+    /* padding: 0; */
+
+    margin: 0;
+    margin-top: 3vh;
+
+    align-self: center;
   }
 
   .form-group h2{
@@ -73,7 +87,7 @@ extra-large-device: 1200px; */
   }
 
   button[type="submit"] {
-    margin-top: 10%;
+    margin-top: 5%;
     width: 60%;
   }
 }
