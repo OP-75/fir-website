@@ -1,11 +1,17 @@
 .edit-case {
-  max-width: 500px;
+  max-width: 50vh;
+  min-width: max-content;
+  
   margin: 5% auto;
   padding: 30px; /* Increased padding for better spacing */
   background-color: #fff; /* White background color */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9); /* Subtle box shadow effect */
   border-radius: 8px;
   border: 0.5px solid black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .edit-case h4 {
@@ -27,13 +33,23 @@
 .edit-case label {
   font-weight: bold;
   display: block;
-  margin-bottom: 15px; /* Increased margin bottom for better spacing */
   color: #333; /* Darker text color for better contrast */
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
+.edit-case label {
+  margin: auto 0;
+}
+
+
 .edit-case button {
-  width: 100%;
-  padding: 14px 24px; /* Increased padding for better visual appeal */
+  width: 50%;
+
+  margin: 0 auto;
+
   background-color: #23c3fd;
   color: #ffffff; /* White text color for better contrast */
   border: none;
@@ -41,6 +57,8 @@
   cursor: pointer;
   font-size: 18px; /* Increased font size for better emphasis */
   margin-top: 20px; /* Increased margin top for better spacing */
+
+  text-align: cente
 }
 
 .edit-case button:hover {
@@ -62,6 +80,15 @@
   color: #333; /* Darker text color for better contrast */
 }
 
+
+.edit-case input[type="checkbox"] {
+  position: relative;
+  vertical-align: middle;
+  margin: 0;
+  margin-left: 3%;
+}
+
+
 .edit-case input[type="checkbox"]:checked {
   background-color: #23c3fd;
 }
@@ -72,4 +99,38 @@
 
 .edit-case button[type="submit"]:hover {
   background-color: #1d9ed8;
+}
+
+
+/* small-device: 576px;
+medium-device: 768px;
+large-device: 992px;
+extra-large-device: 1200px; */
+
+/* Media queries for smaller devices */
+@media (max-width: 576px) {
+
+  .edit-case{
+    padding: 10px;
+    margin: 10% 5%;
+  }
+
+  .edit-case input {
+    width: 100%;
+  }
+
+
+
+}
+
+/* Media queries for medium devices */
+@media (max-width: 768px) {
+  .edit-case{
+    padding: 10px;
+    margin: 10% auto;
+  }
+
+  .edit-case input {
+    width: 100%;
+  }
 }

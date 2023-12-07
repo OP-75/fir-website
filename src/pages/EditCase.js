@@ -104,7 +104,7 @@ export default function EditCase() {
       console.log(res);
     } catch (error) {
       const errorMsg = error.response.data.error;
-      window.alert(errorMsg);
+      window.alert(JSON.stringify(error));
       if (errorMsg === "Please login") navigate("/login");
       return;
     }
@@ -126,7 +126,7 @@ export default function EditCase() {
           required
         />
         <label htmlFor="assignMe">
-          Assign me as officer
+          Assign me as officer: 
           <input
             type="checkbox"
             name="assignMe"
