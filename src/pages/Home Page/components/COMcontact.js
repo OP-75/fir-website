@@ -11,8 +11,7 @@ export default function Contact(){
         <div className="sideImg">
             <div className="articles">
                 <h3>News Articles for you!</h3>
-                <marquee scrollamount="5" bgcolor="#ededed" height="180px" 
-                width="550px" direction="up">
+                <marquee scrollamount="5" bgcolor="#ededed" direction="up">
                     <ul id="sideLinks">
                     <li><a href="https://www.mahapolice.gov.in/police-patil/">Police Patil: In a city around you!</a></li>
                     <li><a href="https://www.mahapolice.gov.in/senior-citizens-corner/">Senior Citizen Corner</a></li>

@@ -53,6 +53,7 @@ function App() {
         </div>
       </div>
     </div>
+
     <div className="cardsTitle"><h1>Get information from our own sources</h1></div>
     <div className="cardsApp">
         <Cards title="1098" mssg="Child Helpline extends a helping hand to children from all kinds of influences or stress, while protecting all kinds of privacy." link="https://www.humanrightsinitiative.org/publications/police/fir.pdf" />
@@ -60,14 +61,9 @@ function App() {
         <Cards title="108" mssg="Takes down necessary information regarding the patient and dispatches the nearest 108 ambulance to the concerned patient." link="https://zhl.org.in/emergency-108-ambulance" />
         <Cards title="1091/103" mssg="Provide 24 hours immediate and emergency response to women affected by violence or any kind of mistrouble concerning police" link="https://citizen.mahapolice.gov.in/Citizen/MH/Women.aspx#:~:text=103%20is%20started%20in%20Mumbai,1091%20is%20used." />
     </div>
+    
     <Slideshow/>
-    {/* <div className="team">
-      <div className="photos">
-        <img src={commi} alt="" id="commi" />
-        <img src={sp} alt="" id="sp" />
-      </div>
-      
-    </div> */}
+
     <Contact/>
     
     <Footer/>
