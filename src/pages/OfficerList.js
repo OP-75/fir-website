@@ -61,7 +61,7 @@ export default function CasesList() {
   }, []);
 
   return (
-    <div id="cases-container">
+    <div id="officer-container">
       <table>
         <tr>
           <th>officerId</th>
