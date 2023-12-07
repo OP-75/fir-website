@@ -3,6 +3,8 @@
 .navbar-container{
     background-color: #2fc7ff;
     width: 100vw;
+
+    max-width: 100%;
 }
 
 

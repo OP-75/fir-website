@@ -9,7 +9,7 @@ export default function Footer(){
                 <img src={logo} alt="" width="100px" height=" 80px"/>
                 <div className="head">
                     <h2>Maharashtra State Police</h2>
-                    <h5>Official Website</h5>
+                    <h5>Demo Website</h5>
                 </div>
             </div>
             <div className="box">

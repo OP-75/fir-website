@@ -17,6 +17,8 @@ greyish color (for bg) - #f7f5f5
   flex-direction: row;
   position: relative;
   width: 100vw;
+
+  max-width: 100%;
 }
 
 .bubble {

@@ -5,9 +5,10 @@
     /* position: static; prevents the table from clipping with even overflow  on the left side*/
     position: static; 
 
-    max-width: 100vw;
-    min-width: 100vw;
-    width: 100vw;
+    max-width: 100%; /* ! IMP putting 100% insead of 100vw is much much better & prevents overflow*/
+    min-width: 100%;
+    width: 100%;
+
     overflow: auto;
 
 }

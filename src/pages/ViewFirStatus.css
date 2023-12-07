@@ -4,7 +4,9 @@
     justify-content: center;
     align-items: center;
 
-    width: 100vw;
+    max-width: 100%; /* ! IMP putting 100% insead of 100vw is much much better & prevents overflow*/
+    min-width: 100%;
+    width: 100%;
     
     margin: 0;
 }

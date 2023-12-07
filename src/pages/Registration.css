@@ -1,33 +1,38 @@
 .firForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 100%; /* ! IMP putting 100% insead of 100vw is much much better & prevents overflow*/
+  min-width: 100%;
+  width: 100%;
 }
 
 .firForm form {
-    background-color: #f9f9f9;
-    opacity: 0.9;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    column-gap: 40px;
-    margin: 45px 180px;
-    border: 1px solid #d4d4d4;
-    border-radius: 10px;
-    padding: 20px;
-    min-width: fit-content;
+  background-color: #f9f9f9;
+  opacity: 0.9;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 40px;
+  margin: 45px 180px;
+  border: 1px solid #d4d4d4;
+  border-radius: 10px;
+  padding: 20px;
+  min-width: fit-content;
 }
 
 .col-1,
 .col-2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    row-gap: 20px;
-    margin: 25px 85px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  row-gap: 20px;
+
+  min-width: max-content;
 }
 
 #crimeType,
@@ -45,39 +50,98 @@
 #proofOfCrime,
 #witnesses,
 #additionalInfo {
-    width: 380px;
-    height: 40px;
-    box-sizing: border-box;
-    font-family: 'Raleway', sans-serif;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #d4d4d4;
-    outline: none;
-    margin-bottom: 5px;
+  width: 380px;
+  height: 40px;
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #d4d4d4;
+  outline: none;
+  margin-bottom: 5px;
 }
 
 button[type="submit"] {
-    width: 100%;
-    height: 40px;
-    background-color: #23c3fd;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Raleway', sans-serif;
+  width: 100%;
+  height: 40px;
+  background-color: #23c3fd;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
 }
 
 #disabledOpt {
-    color: grey;
+  color: grey;
 }
 
-legend{
-    font-size: large;
-    font-weight: 600;
-    margin: 15px 2px;
+legend,
+.title {
+  font-size: large;
+  font-weight: 600;
+  margin: 15px 2px;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* small-device: 576px;
+medium-device: 768px;
+large-device: 992px;
+extra-large-device: 1200px; */
+
+/* Media queries for smaller devices */
+@media (max-width: 576px) {
+  .firForm form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-width: 90%;
+    max-width: 90%;
+  }
+  .col-1,
+  .col-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    text-align: center;
+
+    min-width: 90%;
+    max-width: 90%;
+  }
+
+  input, select{
+    max-width: 100%;
+  }
+}
+
+/* Media queries for medium devices */
+@media (max-width: 768px) {
+  .firForm form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-width: 90%;
+    max-width: 90%;
+  }
+
+  .col-1,
+  .col-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    text-align: center;
+
+    min-width: 90%;
+    max-width: 90%;
+  }
 }

@@ -7,7 +7,11 @@
     Remove the margin top afterwards, i added it for cards
     */
     margin-top: 80px;
-    padding: 35px;
+    padding: 2%px;
+
+    display: flex;
+    flex-direction: column;
+
 }
 
 .heading{
@@ -29,8 +33,14 @@
     /* text-decoration: underline; */
 }
 
+.list, .column-list{
+    
+    max-width: 80%;
+}
+
 .list li{
     list-style: none;
+    padding: 2%;
 }
 
 .list a{
@@ -43,11 +53,43 @@
 }
 .column-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px; 
+    grid-template-columns: repeat(4, 1fr); 
 }
 .box-2{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    flex-wrap: wrap;
+
+    max-width: 100vw;
 }
+
+.box-2 p{
+    margin: 2%;
+}
+
+/* small-device: 576px;
+medium-device: 768px;
+large-device: 992px;
+extra-large-device: 1200px; */
+
+/* Media queries for smaller devices */
+@media (max-width: 576px) {
+    .column-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 5%; 
+    }
+    
+}
+
+/* Media queries for medium devices */
+@media (max-width: 768px) {
+
+    .column-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 5%; 
+    }
+
+}
+
