@@ -1,5 +1,7 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
+import Chart from 'chart.js/auto'; //! DO NOT REMOVE or else everything will break
+
 
 const Barchart = (props) => {
   const { chartData } = props;
@@ -21,12 +23,11 @@ const Barchart = (props) => {
         text: 'Crime Rate by Month',
       },
     },
+    responsive: true,
   };
 
   return (
-    <div style={{ padding: '1rem', width: '50vw' }}>
-      <Bar data={chartData} options={options} />
-    </div>
+    <Bar data={chartData} options={options}  />
   );
 };
 

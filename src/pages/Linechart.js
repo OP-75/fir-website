@@ -1,5 +1,7 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
+import Chart from 'chart.js/auto'; //! DO NOT REMOVE or else everything will break
+
 
 const AreaChart = (props) => {
   const { chartData } = props;
@@ -19,12 +21,11 @@ const AreaChart = (props) => {
         text: "Crime Trends Over Time",
       },
     },
+    responsive: true,
   };
 
   return (
-    <div style={{ padding: "1rem", width: "50vw" }}>
       <Line data={chartData} options={options} />
-    </div>
   );
 };
 

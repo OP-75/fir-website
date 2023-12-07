@@ -63,12 +63,9 @@ export default function CrimeBarchart() {
 
   return (
     <div className="chart-container">
-        <div className="crime-barchart">
-        {chartData && <Barchart chartData={chartData} />}
-        {chartData && <Piechart chartData={chartData} />}
-        {chartData && <LineChart chartData={chartData} />}
-        </div>
+      {chartData && <Barchart chartData={chartData} />}
+      {chartData && <Piechart chartData={chartData} />}
+      {chartData && <LineChart chartData={chartData} />}
     </div>
-    
   );
 }
