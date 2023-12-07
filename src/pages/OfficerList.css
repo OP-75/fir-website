@@ -11,25 +11,3 @@
     overflow: auto;
 
 }
-
-/* small-device: 576px;
-medium-device: 768px;
-large-device: 992px;
-extra-large-device: 1200px; */
-
-/* Media queries for smaller devices */
-@media (max-width: 576px) {
-
-    #cases-container{
-        
-    }
-  
-}
-  
-/* Media queries for medium devices */
-@media (max-width: 768px) {
-    #cases-container{
-        
-    }
-}
-  
