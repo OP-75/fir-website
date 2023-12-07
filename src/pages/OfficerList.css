@@ -1,17 +1,39 @@
-#officer-container{
-    margin: 0;
-    margin-top: 5%;
+#officer-container {
+  margin: 0;
+  margin-top: 5%;
 
-    /* position: static; prevents the table from clipping with even overflow  on the left side*/
-    position: static; 
+  /* position: static; prevents the table from clipping with even overflow  on the left side*/
+  position: static;
 
-    max-width: 100%; /* ! IMP putting 100% insead of 100vw is much much better & prevents overflow*/
-    min-width: 100%;
-    width: 100%;
+  max-width: 100%; /* ! IMP putting 100% insead of 100vw is much much better & prevents overflow*/
+  min-width: 100%;
+  width: 100%;
 
-    overflow: auto;
+  overflow: auto;
 
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+}
 
+/* small-device: 576px;
+medium-device: 768px;
+large-device: 992px;
+extra-large-device: 1200px; */
+
+/* Media queries for smaller devices */
+@media (max-width: 576px) {
+
+    #officer-container {
+        overflow: auto;
+        display:block
+    }
+
+}
+
+/* Media queries for medium devices */
+@media (max-width: 768px) {
+    #officer-container {
+        overflow: auto;
+        display:block
+    }
 }

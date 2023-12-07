@@ -116,7 +116,7 @@ extra-large-device: 1200px; */
     max-width: 90%;
   }
 
-  input, select{
+  input, select, textarea{
     max-width: 100%;
   }
 }
