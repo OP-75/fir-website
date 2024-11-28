@@ -42,7 +42,7 @@ export default function Login(){
         navigate("/officer-dashboard")
       }
       else{
-        window.alert(`Cant login: ${response?.data.msg}`)
+        window.alert(`Cant login: ${response?.data.msg}, try Username: hparyani75@gmail.com , password: password`)
         return;
       }
       
